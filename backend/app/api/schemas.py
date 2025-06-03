@@ -1,7 +1,51 @@
-from datetime import datetime
-from typing import Dict, List, Optional, Any
+# app/api/schemas.py (New schemas for enhanced responses)
 
+from datetime import datetime
 from pydantic import BaseModel, Field, validator
+from typing import Dict, Any, List, Optional
+
+class SnapshotResponse(BaseModel):
+    """Schema for metric snapshot response."""
+    id: int
+    dao_id: int
+    run_id: int
+    metric_name: str
+    jsonb_payload: Dict[str, Any]
+
+class EnhancedMetricsResponse(BaseModel):
+    """Schema for enhanced DAO metrics response with all metrics included."""
+    id: int
+    dao_name: str
+    chain_id: str
+    description: Optional[str] = None
+    created_at: str
+    network_participation: Optional[Dict[str, Any]] = None
+    accumulated_funds: Optional[Dict[str, Any]] = None
+    voting_efficiency: Optional[Dict[str, Any]] = None
+    decentralisation: Optional[Dict[str, Any]] = None
+    health_metrics: Optional[Dict[str, Any]] = None
+
+class DAOResponse(BaseModel):
+    """Schema for DAO response with basic info."""
+    id: int
+    name: str
+    chain_id: str
+    description: Optional[str] = None
+    created_at: str
+    # Optional summary metrics
+    participation_rate: Optional[float] = None
+    total_members: Optional[int] = None
+    treasury_value_usd: Optional[float] = None
+    total_proposals: Optional[int] = None
+    approval_rate: Optional[float] = None
+    network_health_score: Optional[float] = None
+
+class DAOListResponse(BaseModel):
+    """Schema for paginated DAO list response."""
+    items: List[DAOResponse]
+    total: int
+    limit: int
+    offset: int
 
 
 class DAOBase(BaseModel):

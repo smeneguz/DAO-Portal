@@ -1,54 +1,53 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ModeToggle } from "./mode-toggle"
-import { usePathname } from "next/navigation"
+// components/navbar.tsx
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useDAOSelection } from '../lib/context/DAOSelectionContext';
+import { ModeToggle } from './mode-toggle';
 
-export function Navbar() {
-  const pathname = usePathname()
-  
+const Navbar = () => {
+  const { selectedDAOIds } = useDAOSelection();
+  const [mounted, setMounted] = useState(false);
+
+  // Only show the client-side rendered content after mounting
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
-    <header className="border-b sticky top-0 z-50 bg-background">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
+    <header className="border-b">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="/" className="font-bold text-xl">
+          <Link href="/" className="text-xl font-bold">
             DAO Portal
           </Link>
-          <nav className="ml-8 hidden md:flex items-center space-x-6">
-            <NavLink href="/" active={pathname === "/"}>
-              Dashboard
-            </NavLink>
-            <NavLink href="/dao" active={pathname.startsWith("/dao")}>
-              DAOs
-            </NavLink>
+          <nav className="hidden md:flex ml-8">
+            <ul className="flex space-x-6">
+              <li>
+                <Link href="/" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/dao/compare" className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">
+                  Compare
+                  {mounted && selectedDAOIds.length > 0 && (
+                    <span className="ml-1 inline-flex items-center justify-center h-5 w-5 text-xs font-medium bg-blue-100 text-blue-800 rounded-full dark:bg-blue-900 dark:text-blue-200">
+                      {selectedDAOIds.length}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            </ul>
           </nav>
         </div>
         <div className="flex items-center space-x-4">
-          {/* Will add user menu here later */}
           <ModeToggle />
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-function NavLink({ 
-  href, 
-  active, 
-  children 
-}: { 
-  href: string
-  active: boolean
-  children: React.ReactNode 
-}) {
-  return (
-    <Link
-      href={href}
-      className={`text-sm font-medium transition-colors hover:text-primary ${
-        active ? "text-foreground" : "text-muted-foreground"
-      }`}
-    >
-      {children}
-    </Link>
-  )
-}
+export default Navbar;

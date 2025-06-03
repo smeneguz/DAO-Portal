@@ -1,46 +1,46 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Providers } from './providers'
+// app/layout.tsx
+import React from 'react';
+import type { Metadata } from 'next';
+import './globals.css';
+import { Inter } from 'next/font/google';
+import { ThemeProvider } from '../components/theme-provider';
+import Navbar from '../components/navbar';
+import { DAOSelectionProvider } from '../lib/context/DAOSelectionContext';
+import { Providers } from './providers'; // Import the Providers component
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'DAO Portal',
-  description: 'Analytics platform for tracking and visualizing DAO metrics',
-}
+  description: 'Analytics and monitoring for DAOs',
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <div className="flex flex-col min-h-screen">
-            <header className="border-b">
-              <div className="container mx-auto py-4 px-4">
-                <nav className="flex justify-between items-center">
-                  <a href="/" className="text-xl font-bold">DAO Portal</a>
-                  <div className="flex space-x-4">
-                    <a href="/dao" className="text-sm font-medium hover:text-primary">DAOs</a>
+        <Providers> {/* Add the Providers component here */}
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <DAOSelectionProvider>
+              <div className="flex flex-col min-h-screen">
+                <Navbar />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <footer className="border-t py-4">
+                  <div className="container mx-auto text-center text-sm text-gray-500">
+                    DAO Portal &copy; {new Date().getFullYear()}
                   </div>
-                </nav>
+                </footer>
               </div>
-            </header>
-            <main className="flex-1 container mx-auto py-8 px-4">
-              {children}
-            </main>
-            <footer className="border-t py-6">
-              <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-                &copy; {new Date().getFullYear()} DAO Portal. All rights reserved.
-              </div>
-            </footer>
-          </div>
+            </DAOSelectionProvider>
+          </ThemeProvider>
         </Providers>
       </body>
     </html>
-  )
+  );
 }

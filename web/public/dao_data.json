@@ -1,0 +1,2291 @@
+[
+    {
+      "dao_name": "Uniswap",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T17:38:34.119947",
+      "network_participation": {
+        "num_distinct_voters": 21527,
+        "total_members": 393314,
+        "participation_rate": 5.473235125116319,
+        "unique_proposers": 34
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 2087864352.5307693,
+        "circulating_supply": 628494054.71,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 62.84940547100001,
+        "token_velocity": 0.009781221063290352
+      },
+      "voting_efficiency": {
+        "total_proposals": 83,
+        "approved_proposals": 57,
+        "approval_rate": 68.67469879518072,
+        "avg_voting_duration_days": 6.066666666666666,
+        "proposal_states": {
+          "Unknown": 83
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 37.15059452899999,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 162806,
+          "1-10": 121846,
+          "10-100": 73050,
+          "100-1000": 29671,
+          "1000-10000": 4658,
+          "10000+": 1283
+        },
+        "proposer_concentration": 40.963855421686745
+      },
+      "health_metrics": {
+        "network_health_score": 23.713368378866804,
+        "activity_ratio": 0.0,
+        "total_volume": 16285733070.378456,
+        "mean_daily_volume": 9781221.063290352
+      }
+    },
+    {
+      "dao_name": "Aave",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T17:41:06.057186",
+      "network_participation": {
+        "num_distinct_voters": 9642,
+        "total_members": 204619,
+        "participation_rate": 4.712172378909094,
+        "unique_proposers": 52
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 528.2588365440859,
+        "circulating_supply": 2778566.2958411295,
+        "total_supply": 16000000.0,
+        "circulating_token_percentage": 17.36603934900706,
+        "token_velocity": 0.00546448087431694
+      },
+      "voting_efficiency": {
+        "total_proposals": 708,
+        "approved_proposals": 632,
+        "approval_rate": 89.26553672316385,
+        "avg_voting_duration_days": 3.0020428101962873,
+        "proposal_states": {
+          "Unknown": 708
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 17.37213540486614,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 127660,
+          "1-10": 58182,
+          "10-100": 15525,
+          "100-1000": 2654,
+          "1000-10000": 441,
+          "10000+": 157
+        },
+        "proposer_concentration": 7.344632768361582
+      },
+      "health_metrics": {
+        "network_health_score": 26.678510145276316,
+        "activity_ratio": 0.0,
+        "total_volume": 1.042128803135846e+60,
+        "mean_daily_volume": 6.3274365703451475e+56
+      }
+    },
+    {
+      "dao_name": "Lido DAO",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T17:52:02.798743",
+      "network_participation": {
+        "num_distinct_voters": 585,
+        "total_members": 56918,
+        "participation_rate": 1.027794370849292,
+        "unique_proposers": 1
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 166730892.8571636,
+        "circulating_supply": 897877243.8587132,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 89.78772438587131,
+        "token_velocity": 0.03771597048524825
+      },
+      "voting_efficiency": {
+        "total_proposals": 185,
+        "approved_proposals": 142,
+        "approval_rate": 76.75675675675676,
+        "avg_voting_duration_days": 3.0,
+        "proposal_states": {
+          "Unknown": 185
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 10.212275614128663,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 18402,
+          "1-10": 7321,
+          "10-100": 11103,
+          "100-1000": 13435,
+          "1000-10000": 5004,
+          "10000+": 1653
+        },
+        "proposer_concentration": 0.5405405405405406
+      },
+      "health_metrics": {
+        "network_health_score": 26.90112530929009,
+        "activity_ratio": 0.0,
+        "total_volume": 23452590026.301647,
+        "mean_daily_volume": 15101474.5822934
+      }
+    },
+    {
+      "dao_name": "Maker",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T17:52:05.398746",
+      "network_participation": {
+        "num_distinct_voters": 2569,
+        "total_members": 110665,
+        "participation_rate": 2.321420503320833,
+        "unique_proposers": 0
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 871043.2997628152,
+        "total_supply": 871043.2997628152,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.021526339096364765
+      },
+      "voting_efficiency": {
+        "total_proposals": 1221,
+        "approved_proposals": 1210,
+        "approval_rate": 99.09909909909909,
+        "avg_voting_duration_days": 5.0,
+        "proposal_states": {}
+      },
+      "decentralisation": {
+        "largest_holder_percent": 24.526740537635877,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 102839,
+          "1-10": 6016,
+          "10-100": 1277,
+          "100-1000": 400,
+          "1000-10000": 120,
+          "10000+": 13
+        },
+        "proposer_concentration": 0.0
+      },
+      "health_metrics": {
+        "network_health_score": 27.003435467156677,
+        "activity_ratio": 0.0,
+        "total_volume": 57669062.439161204,
+        "mean_daily_volume": 21526.339096364765
+      }
+    },
+    {
+      "dao_name": "Ethereum Name Service",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T17:59:22.742653",
+      "network_participation": {
+        "num_distinct_voters": 2974,
+        "total_members": 70777,
+        "participation_rate": 4.201930005510265,
+        "unique_proposers": 8
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 151364721.19021505,
+        "circulating_supply": 90188964.40336986,
+        "total_supply": 100000000.0,
+        "circulating_token_percentage": 90.18896440336985,
+        "token_velocity": 0.013361126812842577
+      },
+      "voting_efficiency": {
+        "total_proposals": 39,
+        "approved_proposals": 36,
+        "approval_rate": 92.3076923076923,
+        "avg_voting_duration_days": 6.893912037037037,
+        "proposal_states": {
+          "Unknown": 39
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 50.22552522947943,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 31510,
+          "1-10": 12848,
+          "10-100": 14797,
+          "100-1000": 10803,
+          "1000-10000": 590,
+          "10000+": 229
+        },
+        "proposer_concentration": 20.51282051282051
+      },
+      "health_metrics": {
+        "network_health_score": 20.51548512534913,
+        "activity_ratio": 0.0,
+        "total_volume": 1252605638.7039902,
+        "mean_daily_volume": 1002084.5109631933
+      }
+    },
+    {
+      "dao_name": "Curve DAO token",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T17:59:30.482199",
+      "network_participation": {
+        "num_distinct_voters": 2527,
+        "total_members": 100831,
+        "participation_rate": 2.5061736965814085,
+        "unique_proposers": 155
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 2245797936.4857397,
+        "total_supply": 2245797936.4857397,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.03685438235754404
+      },
+      "voting_efficiency": {
+        "total_proposals": 1208,
+        "approved_proposals": 1015,
+        "approval_rate": 84.02317880794702,
+        "avg_voting_duration_days": 0.5,
+        "proposal_states": {
+          "Unknown": 1208
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 39.98935422673949,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 34829,
+          "1-10": 13460,
+          "10-100": 23375,
+          "100-1000": 18158,
+          "1000-10000": 7903,
+          "10000+": 3106
+        },
+        "proposer_concentration": 12.831125827814569
+      },
+      "health_metrics": {
+        "network_health_score": 27.942993417401492,
+        "activity_ratio": 0.0,
+        "total_volume": 81541996163.36797,
+        "mean_daily_volume": 48022377.01022847
+      }
+    },
+    {
+      "dao_name": "Compound",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:03:22.973227",
+      "network_participation": {
+        "num_distinct_voters": 4676,
+        "total_members": 231857,
+        "participation_rate": 2.016760330721091,
+        "unique_proposers": 48
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 5954241.195567704,
+        "circulating_supply": 9997839.983186942,
+        "total_supply": 10000000.0,
+        "circulating_token_percentage": 99.97839983186941,
+        "token_velocity": 0.017500921781031475
+      },
+      "voting_efficiency": {
+        "total_proposals": 393,
+        "approved_proposals": 317,
+        "approval_rate": 80.6615776081425,
+        "avg_voting_duration_days": 2.9256202290076336,
+        "proposal_states": {
+          "Unknown": 393
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 10.18512096312514,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 199728,
+          "1-10": 24975,
+          "10-100": 5749,
+          "100-1000": 1050,
+          "1000-10000": 212,
+          "10000+": 143
+        },
+        "proposer_concentration": 12.213740458015266
+      },
+      "health_metrics": {
+        "network_health_score": 25.040979884873774,
+        "activity_ratio": 0.0,
+        "total_volume": 313616518.316084,
+        "mean_daily_volume": 175009.21781031473
+      }
+    },
+    {
+      "dao_name": "Arbitrum",
+      "chain_id": 42161,
+      "timestamp": "2025-04-06T18:20:29.100006",
+      "network_participation": {
+        "num_distinct_voters": 154492,
+        "total_members": 1549180,
+        "participation_rate": 9.972501581481815,
+        "unique_proposers": 12
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 825236919.202006,
+        "circulating_supply": 7206705967.619259,
+        "total_supply": 9999998977.630224,
+        "circulating_token_percentage": 72.06706704411171,
+        "token_velocity": 0.02716036707079904
+      },
+      "voting_efficiency": {
+        "total_proposals": 65,
+        "approved_proposals": 20,
+        "approval_rate": 30.76923076923077,
+        "avg_voting_duration_days": 15.166666666666666,
+        "proposal_states": {
+          "Unknown": 65
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 27.932932953888244,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 823422,
+          "1-10": 362798,
+          "10-100": 196922,
+          "100-1000": 108367,
+          "1000-10000": 49489,
+          "10000+": 8182
+        },
+        "proposer_concentration": 18.461538461538463
+      },
+      "health_metrics": {
+        "network_health_score": 17.99555135274325,
+        "activity_ratio": 1.262723089793642,
+        "total_volume": 203702753030.9942,
+        "mean_daily_volume": 271603670.7079904
+      }
+    },
+    {
+      "dao_name": "Optimism",
+      "chain_id": 10,
+      "timestamp": "2025-04-06T18:20:34.857783",
+      "network_participation": {
+        "num_distinct_voters": 100877,
+        "total_members": 1402262,
+        "participation_rate": 7.193876750564446,
+        "unique_proposers": 1
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.636932,
+        "circulating_supply": 4294963293.239972,
+        "total_supply": 4294963294.239972,
+        "circulating_token_percentage": 99.99999997671691,
+        "token_velocity": 0.02536505806603486
+      },
+      "voting_efficiency": {
+        "total_proposals": 127,
+        "approved_proposals": 21,
+        "approval_rate": 16.535433070866144,
+        "avg_voting_duration_days": 9.367770969498912,
+        "proposal_states": {
+          "Unknown": 127
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 30.12934646160412,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 740600,
+          "1-10": 362583,
+          "10-100": 161842,
+          "100-1000": 103560,
+          "1000-10000": 30143,
+          "10000+": 3534
+        },
+        "proposer_concentration": 0.7874015748031495
+      },
+      "health_metrics": {
+        "network_health_score": 28.517184052627986,
+        "activity_ratio": 1.2280579340317581,
+        "total_volume": 115696504735.75516,
+        "mean_daily_volume": 108942094.85476074
+      }
+    },
+    {
+      "dao_name": "dYdX",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:20:37.571726",
+      "network_participation": {
+        "num_distinct_voters": 1462,
+        "total_members": 51158,
+        "participation_rate": 2.8578130497673873,
+        "unique_proposers": 6
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 1000000000.0,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.007541066524028829
+      },
+      "voting_efficiency": {
+        "total_proposals": 17,
+        "approved_proposals": 15,
+        "approval_rate": 88.23529411764706,
+        "avg_voting_duration_days": 5.349754901960784,
+        "proposal_states": {
+          "Unknown": 17
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 66.24144660309065,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 18284,
+          "1-10": 5381,
+          "10-100": 11853,
+          "100-1000": 11126,
+          "1000-10000": 3800,
+          "10000+": 714
+        },
+        "proposer_concentration": 35.294117647058826
+      },
+      "health_metrics": {
+        "network_health_score": 23.84811796277138,
+        "activity_ratio": 0.0,
+        "total_volume": 9916502479.097897,
+        "mean_daily_volume": 7541066.524028829
+      }
+    },
+    {
+      "dao_name": "UMA",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:20:49.884450",
+      "network_participation": {
+        "num_distinct_voters": 3046,
+        "total_members": 25777,
+        "participation_rate": 11.816735849788571,
+        "unique_proposers": 0
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 36404660.43026103,
+        "circulating_supply": 58446083.747324795,
+        "total_supply": 124043772.44681783,
+        "circulating_token_percentage": 47.11730592713374,
+        "token_velocity": 0.012415400391405599
+      },
+      "voting_efficiency": {
+        "total_proposals": 205,
+        "approved_proposals": 205,
+        "approval_rate": 100.0,
+        "avg_voting_duration_days": 2.0,
+        "proposal_states": {}
+      },
+      "decentralisation": {
+        "largest_holder_percent": 27.89756376914168,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 10944,
+          "1-10": 6648,
+          "10-100": 6061,
+          "100-1000": 1547,
+          "1000-10000": 403,
+          "10000+": 174
+        },
+        "proposer_concentration": 0.0
+      },
+      "health_metrics": {
+        "network_health_score": 21.596094334377533,
+        "activity_ratio": 0.0,
+        "total_volume": 2257119791.157538,
+        "mean_daily_volume": 1241540.03914056
+      }
+    },
+    {
+      "dao_name": "Tornado Cash",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:22:08.810771",
+      "network_participation": {
+        "num_distinct_voters": 505,
+        "total_members": 11527,
+        "participation_rate": 4.381018478355166,
+        "unique_proposers": 27
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 14731.53968,
+        "circulating_supply": 6365675.620506598,
+        "total_supply": 9999997.526814999,
+        "circulating_token_percentage": 63.65677194856334,
+        "token_velocity": 0.018177173570868226
+      },
+      "voting_efficiency": {
+        "total_proposals": 61,
+        "approved_proposals": 46,
+        "approval_rate": 75.40983606557377,
+        "avg_voting_duration_days": 4.704918032786885,
+        "proposal_states": {
+          "Unknown": 61
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 36.34322805143668,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 4892,
+          "1-10": 2635,
+          "10-100": 2736,
+          "100-1000": 1055,
+          "1000-10000": 175,
+          "10000+": 34
+        },
+        "proposer_concentration": 44.26229508196721
+      },
+      "health_metrics": {
+        "network_health_score": 17.225890935012014,
+        "activity_ratio": 0.0,
+        "total_volume": 156959893.78444713,
+        "mean_daily_volume": 99974.45463977524
+      }
+    },
+    {
+      "dao_name": "Inverse Finance",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:28:07.096673",
+      "network_participation": {
+        "num_distinct_voters": 466,
+        "total_members": 4849,
+        "participation_rate": 9.610228913177975,
+        "unique_proposers": 20
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 2627637.1087551317,
+        "circulating_supply": 602939.7365252282,
+        "total_supply": 615000.0,
+        "circulating_token_percentage": 98.0389815488176,
+        "token_velocity": 0.1186036366702615
+      },
+      "voting_efficiency": {
+        "total_proposals": 312,
+        "approved_proposals": 293,
+        "approval_rate": 93.91025641025641,
+        "avg_voting_duration_days": 2.6,
+        "proposal_states": {
+          "Unknown": 312
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 61.665316009407064,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 3656,
+          "1-10": 853,
+          "10-100": 244,
+          "100-1000": 70,
+          "1000-10000": 15,
+          "10000+": 11
+        },
+        "proposer_concentration": 6.41025641025641
+      },
+      "health_metrics": {
+        "network_health_score": 15.601217309102262,
+        "activity_ratio": 0.0,
+        "total_volume": 17944730.228210565,
+        "mean_daily_volume": 11860.36366702615
+      }
+    },
+    {
+      "dao_name": "Hop",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:28:16.203567",
+      "network_participation": {
+        "num_distinct_voters": 484,
+        "total_members": 13777,
+        "participation_rate": 3.513101546055019,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 2418969.6728089876,
+        "circulating_supply": 488459480.1176233,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 48.84594801176233,
+        "token_velocity": 0.004150458229517753
+      },
+      "voting_efficiency": {
+        "total_proposals": 17,
+        "approved_proposals": 15,
+        "approval_rate": 88.23529411764706,
+        "avg_voting_duration_days": 6.893912037037037,
+        "proposal_states": {
+          "Unknown": 17
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 51.15405198823768,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 3056,
+          "1-10": 1774,
+          "10-100": 2029,
+          "100-1000": 3358,
+          "1000-10000": 3037,
+          "10000+": 523
+        },
+        "proposer_concentration": 23.52941176470588
+      },
+      "health_metrics": {
+        "network_health_score": 6.570954649261999,
+        "activity_ratio": 0.0,
+        "total_volume": 4052391600.6259336,
+        "mean_daily_volume": 3922934.753752113
+      }
+    },
+    {
+      "dao_name": "Rari",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:29:25.871311",
+      "network_participation": {
+        "num_distinct_voters": 188,
+        "total_members": 28636,
+        "participation_rate": 0.6565162732225172,
+        "unique_proposers": 10
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 4242230.668548101,
+        "circulating_supply": 21215287.732386563,
+        "total_supply": 25000000.0,
+        "circulating_token_percentage": 84.86115092954624,
+        "token_velocity": 0.01402767873982032
+      },
+      "voting_efficiency": {
+        "total_proposals": 52,
+        "approved_proposals": 39,
+        "approval_rate": 75.0,
+        "avg_voting_duration_days": 5.416666666666667,
+        "proposal_states": {
+          "Unknown": 52
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 15.138849070453752,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 11963,
+          "1-10": 7503,
+          "10-100": 6643,
+          "100-1000": 2020,
+          "1000-10000": 396,
+          "10000+": 111
+        },
+        "proposer_concentration": 19.230769230769234
+      },
+      "health_metrics": {
+        "network_health_score": 17.178802051088127,
+        "activity_ratio": 0.0,
+        "total_volume": 423706036.3362728,
+        "mean_daily_volume": 245484.3779468556
+      }
+    },
+    {
+      "dao_name": "InstaDapp",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:29:27.878501",
+      "network_participation": {
+        "num_distinct_voters": 157,
+        "total_members": 0,
+        "participation_rate": 0,
+        "unique_proposers": 15
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 209.988,
+        "circulating_supply": 0.0,
+        "total_supply": 0.0,
+        "circulating_token_percentage": 0,
+        "token_velocity": 0
+      },
+      "voting_efficiency": {
+        "total_proposals": 89,
+        "approved_proposals": 85,
+        "approval_rate": 95.50561797752809,
+        "avg_voting_duration_days": 2.213073501872659,
+        "proposal_states": {
+          "Unknown": 89
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 0,
+        "on_chain_automation": "Yes",
+        "token_distribution": {},
+        "proposer_concentration": 16.853932584269664
+      },
+      "health_metrics": {
+        "network_health_score": 0,
+        "activity_ratio": 0,
+        "total_volume": 0,
+        "mean_daily_volume": 0
+      }
+    },
+    {
+      "dao_name": "Public Nouns",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:29:38.226624",
+      "network_participation": {
+        "num_distinct_voters": 168,
+        "total_members": 160,
+        "participation_rate": 100.0,
+        "unique_proposers": 38
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 57945.7287188,
+        "circulating_supply": 276.0,
+        "total_supply": 287.0,
+        "circulating_token_percentage": 96.16724738675958,
+        "token_velocity": 3.8620689655172415
+      },
+      "voting_efficiency": {
+        "total_proposals": 68,
+        "approved_proposals": 49,
+        "approval_rate": 72.05882352941177,
+        "avg_voting_duration_days": 4.00005787037037,
+        "proposal_states": {
+          "Unknown": 68
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 66.55052264808361,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 112,
+          "1-10": 44,
+          "10-100": 3,
+          "100-1000": 1,
+          "1000-10000": 0,
+          "10000+": 0
+        },
+        "proposer_concentration": 55.88235294117647
+      },
+      "health_metrics": {
+        "network_health_score": -16.452451306154256,
+        "activity_ratio": 0.0,
+        "total_volume": 1456,
+        "mean_daily_volume": 3.8620689655172415
+      }
+    },
+    {
+      "dao_name": "Unlock",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:29:41.594712",
+      "network_participation": {
+        "num_distinct_voters": 201,
+        "total_members": 4876,
+        "participation_rate": 4.122231337161608,
+        "unique_proposers": 23
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.44022898452622256,
+        "circulating_supply": 1000874.9033338593,
+        "total_supply": 1000874.9033338593,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.004311115337924433
+      },
+      "voting_efficiency": {
+        "total_proposals": 66,
+        "approved_proposals": 51,
+        "approval_rate": 77.27272727272727,
+        "avg_voting_duration_days": 0.11666666666666667,
+        "proposal_states": {
+          "Unknown": 66
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 85.65992954611687,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 2914,
+          "1-10": 1530,
+          "10-100": 354,
+          "100-1000": 67,
+          "1000-10000": 8,
+          "10000+": 3
+        },
+        "proposer_concentration": 34.84848484848485
+      },
+      "health_metrics": {
+        "network_health_score": 5.589665167722126,
+        "activity_ratio": 0.0,
+        "total_volume": 6328717.31607307,
+        "mean_daily_volume": 4311.115337924433
+      }
+    },
+    {
+      "dao_name": "Threshold Network",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:29:44.508404",
+      "network_participation": {
+        "num_distinct_voters": 99,
+        "total_members": 8399,
+        "participation_rate": 1.178711751398976,
+        "unique_proposers": 5
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 2601177.20493008,
+        "circulating_supply": 10968672458.0,
+        "total_supply": 11155000000.0,
+        "circulating_token_percentage": 98.32965000448229,
+        "token_velocity": 0.018316405705960777
+      },
+      "voting_efficiency": {
+        "total_proposals": 23,
+        "approved_proposals": 20,
+        "approval_rate": 86.95652173913044,
+        "avg_voting_duration_days": 9.999918981481482,
+        "proposal_states": {
+          "Unknown": 23
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 24.848476858685213,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 1915,
+          "1-10": 172,
+          "10-100": 572,
+          "100-1000": 2087,
+          "1000-10000": 2231,
+          "10000+": 1422
+        },
+        "proposer_concentration": 21.73913043478261
+      },
+      "health_metrics": {
+        "network_health_score": 17.92461907132966,
+        "activity_ratio": 0.0,
+        "total_volume": 218148391957.9929,
+        "mean_daily_volume": 183164057.05960777
+      }
+    },
+    {
+      "dao_name": "Dope Wars",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:30:58.944742",
+      "network_participation": {
+        "num_distinct_voters": 425,
+        "total_members": 1797,
+        "participation_rate": 23.650528658875906,
+        "unique_proposers": 10
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 153903.53659577225,
+        "circulating_supply": 8000.0,
+        "total_supply": 8000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 35.71067415730337
+      },
+      "voting_efficiency": {
+        "total_proposals": 96,
+        "approved_proposals": 72,
+        "approval_rate": 75.0,
+        "avg_voting_duration_days": 6.893912037037037,
+        "proposal_states": {
+          "Unknown": 96
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 1.725,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 976,
+          "1-10": 673,
+          "10-100": 142,
+          "100-1000": 6,
+          "1000-10000": 0,
+          "10000+": 0
+        },
+        "proposer_concentration": 10.416666666666668
+      },
+      "health_metrics": {
+        "network_health_score": 28.434887569609934,
+        "activity_ratio": 0.0,
+        "total_volume": 25426,
+        "mean_daily_volume": 35.71067415730337
+      }
+    },
+    {
+      "dao_name": "Reflexer",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:31:03.333615",
+      "network_participation": {
+        "num_distinct_voters": 141,
+        "total_members": 4154,
+        "participation_rate": 3.3943187289359655,
+        "unique_proposers": 5
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 972622.2961293116,
+        "total_supply": 972622.2961293116,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.009544461473097543
+      },
+      "voting_efficiency": {
+        "total_proposals": 59,
+        "approved_proposals": 52,
+        "approval_rate": 88.13559322033898,
+        "avg_voting_duration_days": 5.099837570621469,
+        "proposal_states": {
+          "Unknown": 59
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 18.782618544295975,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 2715,
+          "1-10": 686,
+          "10-100": 415,
+          "100-1000": 239,
+          "1000-10000": 77,
+          "10000+": 22
+        },
+        "proposer_concentration": 8.47457627118644
+      },
+      "health_metrics": {
+        "network_health_score": 11.76106243877847,
+        "activity_ratio": 0.0,
+        "total_volume": 13724921.87337867,
+        "mean_daily_volume": 9544.45192863607
+      }
+    },
+    {
+      "dao_name": "Cryptex",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:31:09.348160",
+      "network_participation": {
+        "num_distinct_voters": 24,
+        "total_members": 3071,
+        "participation_rate": 0.7815043959622273,
+        "unique_proposers": 3
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 3638359.1880059894,
+        "circulating_supply": 7740819.340717841,
+        "total_supply": 10000000.0,
+        "circulating_token_percentage": 77.4081934071784,
+        "token_velocity": 0.008970840908116751
+      },
+      "voting_efficiency": {
+        "total_proposals": 32,
+        "approved_proposals": 26,
+        "approval_rate": 81.25,
+        "avg_voting_duration_days": 2.6,
+        "proposal_states": {
+          "Unknown": 32
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 23.84180659282159,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 1330,
+          "1-10": 636,
+          "10-100": 696,
+          "100-1000": 284,
+          "1000-10000": 72,
+          "10000+": 53
+        },
+        "proposer_concentration": 9.375
+      },
+      "health_metrics": {
+        "network_health_score": 14.809422273851204,
+        "activity_ratio": 0.0,
+        "total_volume": 129449234.30412471,
+        "mean_daily_volume": 89708.40908116751
+      }
+    },
+    {
+      "dao_name": "Fluence",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:31:13.706100",
+      "network_participation": {
+        "num_distinct_voters": 32,
+        "total_members": 5978,
+        "participation_rate": 0.5352960856473737,
+        "unique_proposers": 2
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 1000000000.0,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.008336170754826708
+      },
+      "voting_efficiency": {
+        "total_proposals": 8,
+        "approved_proposals": 6,
+        "approval_rate": 75.0,
+        "avg_voting_duration_days": 5.0,
+        "proposal_states": {
+          "Unknown": 8
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 37.692131133000004,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 704,
+          "1-10": 102,
+          "10-100": 386,
+          "100-1000": 1350,
+          "1000-10000": 3020,
+          "10000+": 416
+        },
+        "proposer_concentration": 25.0
+      },
+      "health_metrics": {
+        "network_health_score": 13.95057634742161,
+        "activity_ratio": 0.0,
+        "total_volume": 3259442765.137243,
+        "mean_daily_volume": 8336170.754826708
+      }
+    },
+    {
+      "dao_name": "Gitcoin",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:36:00.036539",
+      "network_participation": {
+        "num_distinct_voters": 3174,
+        "total_members": 97517,
+        "participation_rate": 3.254817108811797,
+        "unique_proposers": 19
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 6792907.983785475,
+        "circulating_supply": 95909078.45904586,
+        "total_supply": 100000000.0,
+        "circulating_token_percentage": 95.90907845904586,
+        "token_velocity": 0.015670584347965602
+      },
+      "voting_efficiency": {
+        "total_proposals": 106,
+        "approved_proposals": 87,
+        "approval_rate": 82.0754716981132,
+        "avg_voting_duration_days": 6.066666666666666,
+        "proposal_states": {
+          "Unknown": 106
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 27.12393889800001,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 38768,
+          "1-10": 29503,
+          "10-100": 25050,
+          "100-1000": 3269,
+          "1000-10000": 660,
+          "10000+": 267
+        },
+        "proposer_concentration": 17.92452830188679
+      },
+      "health_metrics": {
+        "network_health_score": 25.119395380337227,
+        "activity_ratio": 0.0,
+        "total_volume": 2218954743.671929,
+        "mean_daily_volume": 1567058.4347965603
+      }
+    },
+    {
+      "dao_name": "Lil Nouns",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:38:27.512149",
+      "network_participation": {
+        "num_distinct_voters": 1136,
+        "total_members": 2289,
+        "participation_rate": 49.62865880297073,
+        "unique_proposers": 75
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 578426.8246060503,
+        "circulating_supply": 7532.0,
+        "total_supply": 7532.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 38.36140724946695
+      },
+      "voting_efficiency": {
+        "total_proposals": 295,
+        "approved_proposals": 133,
+        "approval_rate": 45.08474576271186,
+        "avg_voting_duration_days": 3.0531281387319527,
+        "proposal_states": {
+          "Unknown": 295
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 11.006372809346788,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 1751,
+          "1-10": 488,
+          "10-100": 41,
+          "100-1000": 9,
+          "1000-10000": 0,
+          "10000+": 0
+        },
+        "proposer_concentration": 25.423728813559322
+      },
+      "health_metrics": {
+        "network_health_score": 17.145067386384728,
+        "activity_ratio": 0.0,
+        "total_volume": 35983,
+        "mean_daily_volume": 38.36140724946695
+      }
+    },
+    {
+      "dao_name": "Nouns Dao",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:46:09.302614",
+      "network_participation": {
+        "num_distinct_voters": 1368,
+        "total_members": 414,
+        "participation_rate": 100.0,
+        "unique_proposers": 301
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 6836987.680534719,
+        "circulating_supply": 934.0,
+        "total_supply": 1474.0,
+        "circulating_token_percentage": 63.36499321573948,
+        "token_velocity": 5.993222891566265
+      },
+      "voting_efficiency": {
+        "total_proposals": 778,
+        "approved_proposals": 432,
+        "approval_rate": 55.52699228791774,
+        "avg_voting_duration_days": 4.3593549164524426,
+        "proposal_states": {
+          "Unknown": 778
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 36.63500678426052,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 302,
+          "1-10": 95,
+          "10-100": 16,
+          "100-1000": 1,
+          "1000-10000": 0,
+          "10000+": 0
+        },
+        "proposer_concentration": 38.688946015424165
+      },
+      "health_metrics": {
+        "network_health_score": 19.69535909984142,
+        "activity_ratio": 0.0,
+        "total_volume": 7959,
+        "mean_daily_volume": 5.993222891566265
+      }
+    },
+    {
+      "dao_name": "GMX",
+      "chain_id": 42161,
+      "timestamp": "2025-04-06T18:48:37.967918",
+      "network_participation": {
+        "num_distinct_voters": 131,
+        "total_members": 17382,
+        "participation_rate": 0.7536532044643884,
+        "unique_proposers": 2
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 503062.1480386875,
+        "circulating_supply": 6623453.678965023,
+        "total_supply": 6623453.678965023,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.47530620052982897
+      },
+      "voting_efficiency": {
+        "total_proposals": 8,
+        "approved_proposals": 5,
+        "approval_rate": 62.5,
+        "avg_voting_duration_days": 1.0,
+        "proposal_states": {
+          "Unknown": 8
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 145.89387892584102,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 7719,
+          "1-10": 2906,
+          "10-100": 3840,
+          "100-1000": 2150,
+          "1000-10000": 649,
+          "10000+": 118
+        },
+        "proposer_concentration": 25.0
+      },
+      "health_metrics": {
+        "network_health_score": 25.967099889671616,
+        "activity_ratio": 0.0,
+        "total_volume": 25930295.66659235,
+        "mean_daily_volume": 74512.34386951826
+      }
+    },
+    {
+      "dao_name": "HAI",
+      "chain_id": 10,
+      "timestamp": "2025-04-06T18:48:41.001296",
+      "network_participation": {
+        "num_distinct_voters": 151,
+        "total_members": 3052,
+        "participation_rate": 4.947575360419397,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 981113.0,
+        "total_supply": 981113.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.041947821213512
+      },
+      "voting_efficiency": {
+        "total_proposals": 93,
+        "approved_proposals": 90,
+        "approval_rate": 96.7741935483871,
+        "avg_voting_duration_days": 0.5,
+        "proposal_states": {
+          "Unknown": 93
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 45.93191418863967,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 1389,
+          "1-10": 1057,
+          "10-100": 348,
+          "100-1000": 205,
+          "1000-10000": 40,
+          "10000+": 13
+        },
+        "proposer_concentration": 4.301075268817205
+      },
+      "health_metrics": {
+        "network_health_score": 18.27991162170645,
+        "activity_ratio": 0.0,
+        "total_volume": 4470397.487748648,
+        "mean_daily_volume": 10694.730831934556
+      }
+    },
+    {
+      "dao_name": "Anvil",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:48:43.876146",
+      "network_participation": {
+        "num_distinct_voters": 431,
+        "total_members": 909,
+        "participation_rate": 47.41474147414741,
+        "unique_proposers": 2
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 100000000000.0,
+        "total_supply": 100000000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.009867954636037953
+      },
+      "voting_efficiency": {
+        "total_proposals": 6,
+        "approved_proposals": 6,
+        "approval_rate": 100.0,
+        "avg_voting_duration_days": 7.0,
+        "proposal_states": {
+          "Unknown": 6
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 59.7874668886654,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 91,
+          "1-10": 12,
+          "10-100": 13,
+          "100-1000": 50,
+          "1000-10000": 134,
+          "10000+": 609
+        },
+        "proposer_concentration": 33.33333333333333
+      },
+      "health_metrics": {
+        "network_health_score": 15.953289384259504,
+        "activity_ratio": 0.0,
+        "total_volume": 175224063285.10852,
+        "mean_daily_volume": 589980011.0609714
+      }
+    },
+    {
+      "dao_name": "TrueFi",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:50:01.428405",
+      "network_participation": {
+        "num_distinct_voters": 120,
+        "total_members": 680,
+        "participation_rate": 17.647058823529413,
+        "unique_proposers": 14
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 39449.042909597054,
+        "circulating_supply": 38137330.29162913,
+        "total_supply": 1283173672.2046723,
+        "circulating_token_percentage": 2.9721097866747725,
+        "token_velocity": 0.03151475528468641
+      },
+      "voting_efficiency": {
+        "total_proposals": 47,
+        "approved_proposals": 25,
+        "approval_rate": 53.191489361702125,
+        "avg_voting_duration_days": 2.968032407407407,
+        "proposal_states": {
+          "Unknown": 47
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 70.95445403652644,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 143,
+          "1-10": 19,
+          "10-100": 40,
+          "100-1000": 117,
+          "1000-10000": 207,
+          "10000+": 154
+        },
+        "proposer_concentration": 29.78723404255319
+      },
+      "health_metrics": {
+        "network_health_score": 16.829737777598382,
+        "activity_ratio": 0.0,
+        "total_volume": 1926653013.9081185,
+        "mean_daily_volume": 1553752.4305710634
+      }
+    },
+    {
+      "dao_name": "PoolTogether",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T18:55:02.745498",
+      "network_participation": {
+        "num_distinct_voters": 714,
+        "total_members": 9646,
+        "participation_rate": 7.402031930333817,
+        "unique_proposers": 28
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 803655.2801799597,
+        "circulating_supply": 7559271.909664333,
+        "total_supply": 10000000.0,
+        "circulating_token_percentage": 75.59271909664332,
+        "token_velocity": 0.006692413686376069
+      },
+      "voting_efficiency": {
+        "total_proposals": 113,
+        "approved_proposals": 100,
+        "approval_rate": 88.49557522123894,
+        "avg_voting_duration_days": 4.333333333333333,
+        "proposal_states": {
+          "Unknown": 113
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 24.40728090335667,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 4216,
+          "1-10": 1674,
+          "10-100": 2665,
+          "100-1000": 810,
+          "1000-10000": 207,
+          "10000+": 74
+        },
+        "proposer_concentration": 24.778761061946902
+      },
+      "health_metrics": {
+        "network_health_score": 12.457604924670532,
+        "activity_ratio": 0.0,
+        "total_volume": 100520053.56936857,
+        "mean_daily_volume": 66924.1368637607
+      }
+    },
+    {
+      "dao_name": "Open Dollar",
+      "chain_id": 42161,
+      "timestamp": "2025-04-06T18:58:32.763967",
+      "network_participation": {
+        "num_distinct_voters": 82,
+        "total_members": 4914,
+        "participation_rate": 1.6687016687016685,
+        "unique_proposers": 5
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 350980.4467765552,
+        "circulating_supply": 5012335.165935251,
+        "total_supply": 10000000.0,
+        "circulating_token_percentage": 50.12335165935251,
+        "token_velocity": 0.011399175706761173
+      },
+      "voting_efficiency": {
+        "total_proposals": 23,
+        "approved_proposals": 11,
+        "approval_rate": 47.82608695652174,
+        "avg_voting_duration_days": 2.1666666666666665,
+        "proposal_states": {
+          "Unknown": 23
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 49.8766483406475,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 4366,
+          "1-10": 196,
+          "10-100": 298,
+          "100-1000": 23,
+          "1000-10000": 17,
+          "10000+": 14
+        },
+        "proposer_concentration": 21.73913043478261
+      },
+      "health_metrics": {
+        "network_health_score": -23.96271883693727,
+        "activity_ratio": 0.0,
+        "total_volume": 42746908.90035441,
+        "mean_daily_volume": 113991.75706761173
+      }
+    },
+    {
+      "dao_name": "Ampleforth",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:01:00.313656",
+      "network_participation": {
+        "num_distinct_voters": 292,
+        "total_members": 27741,
+        "participation_rate": 1.0525936339713782,
+        "unique_proposers": 13
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 5443917.651291195,
+        "circulating_supply": 13396992.791768989,
+        "total_supply": 15297897.144559331,
+        "circulating_token_percentage": 87.57408070646889,
+        "token_velocity": 0.016068713003227653
+      },
+      "voting_efficiency": {
+        "total_proposals": 46,
+        "approved_proposals": 35,
+        "approval_rate": 76.08695652173914,
+        "avg_voting_duration_days": 2.965625,
+        "proposal_states": {
+          "Unknown": 46
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 25.269280055101028,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 15914,
+          "1-10": 5636,
+          "10-100": 4370,
+          "100-1000": 1611,
+          "1000-10000": 138,
+          "10000+": 72
+        },
+        "proposer_concentration": 28.26086956521739
+      },
+      "health_metrics": {
+        "network_health_score": 15.122717614899374,
+        "activity_ratio": 0.0,
+        "total_volume": 350217599.9053471,
+        "mean_daily_volume": 241030.69504841478
+      }
+    },
+    {
+      "dao_name": "SoftDAO",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:02:26.264919",
+      "network_participation": {
+        "num_distinct_voters": 132,
+        "total_members": 5412,
+        "participation_rate": 2.4390243902439024,
+        "unique_proposers": 2
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 65605.92802015677,
+        "circulating_supply": 698899888.632846,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 69.8899888632846,
+        "token_velocity": 0.0038691805809865174
+      },
+      "voting_efficiency": {
+        "total_proposals": 10,
+        "approved_proposals": 7,
+        "approval_rate": 70.0,
+        "avg_voting_duration_days": 6.096759259259259,
+        "proposal_states": {
+          "Unknown": 10
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 30.110011136715396,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 2330,
+          "1-10": 290,
+          "10-100": 1025,
+          "100-1000": 1480,
+          "1000-10000": 246,
+          "10000+": 41
+        },
+        "proposer_concentration": 20.0
+      },
+      "health_metrics": {
+        "network_health_score": -8.803265101077738,
+        "activity_ratio": 0.0,
+        "total_volume": 2131918500.1235712,
+        "mean_daily_volume": 3869180.5809865175
+      }
+    },
+    {
+      "dao_name": "BNB Chain",
+      "chain_id": 56,
+      "timestamp": "2025-04-06T19:03:42.343669",
+      "network_participation": {
+        "num_distinct_voters": 145,
+        "total_members": 7975,
+        "participation_rate": 1.8181818181818181,
+        "unique_proposers": 2
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 30324587.291493554,
+        "total_supply": 30324587.291493554,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.21907669852472342
+      },
+      "voting_efficiency": {
+        "total_proposals": 3,
+        "approved_proposals": 2,
+        "approval_rate": 66.66666666666666,
+        "avg_voting_duration_days": 2.3333333333333335,
+        "proposal_states": {
+          "Unknown": 3
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 92.26970970637619,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 671,
+          "1-10": 5325,
+          "10-100": 1418,
+          "100-1000": 369,
+          "1000-10000": 108,
+          "10000+": 84
+        },
+        "proposer_concentration": 66.66666666666666
+      },
+      "health_metrics": {
+        "network_health_score": 23.563619049930633,
+        "activity_ratio": 0.0,
+        "total_volume": 86298564.64576289,
+        "mean_daily_volume": 244471.85452057444
+      }
+    },
+    {
+      "dao_name": "Hifi",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:03:45.277442",
+      "network_participation": {
+        "num_distinct_voters": 132,
+        "total_members": 2963,
+        "participation_rate": 4.454944313196085,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 166806992.55827338,
+        "total_supply": 166806992.55827338,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.07315385432717833
+      },
+      "voting_efficiency": {
+        "total_proposals": 14,
+        "approved_proposals": 13,
+        "approval_rate": 92.85714285714286,
+        "avg_voting_duration_days": 5.014285714285714,
+        "proposal_states": {
+          "Unknown": 14
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 50.51004350611885,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 604,
+          "1-10": 314,
+          "10-100": 709,
+          "100-1000": 786,
+          "1000-10000": 391,
+          "10000+": 159
+        },
+        "proposer_concentration": 28.57142857142857
+      },
+      "health_metrics": {
+        "network_health_score": 18.252990532327285,
+        "activity_ratio": 0.0,
+        "total_volume": 4143558966.1407733,
+        "mean_daily_volume": 4874775.254283263
+      }
+    },
+    {
+      "dao_name": "sudoswap",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:04:49.509513",
+      "network_participation": {
+        "num_distinct_voters": 100,
+        "total_members": 2509,
+        "participation_rate": 3.9856516540454363,
+        "unique_proposers": 3
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.9436893203883494,
+        "circulating_supply": 43163918.77361722,
+        "total_supply": 58056418.77361722,
+        "circulating_token_percentage": 74.34822830172975,
+        "token_velocity": 0.017326468550147495
+      },
+      "voting_efficiency": {
+        "total_proposals": 8,
+        "approved_proposals": 2,
+        "approval_rate": 25.0,
+        "avg_voting_duration_days": 3.25,
+        "proposal_states": {
+          "Unknown": 8
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 30.598315182459523,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 1012,
+          "1-10": 134,
+          "10-100": 430,
+          "100-1000": 466,
+          "1000-10000": 269,
+          "10000+": 198
+        },
+        "proposer_concentration": 37.5
+      },
+      "health_metrics": {
+        "network_health_score": 15.507401129473164,
+        "activity_ratio": 0.0,
+        "total_volume": 477434306.19302404,
+        "mean_daily_volume": 604347.2230291446
+      }
+    },
+    {
+      "dao_name": "Union",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:04:52.808128",
+      "network_participation": {
+        "num_distinct_voters": 37,
+        "total_members": 364,
+        "participation_rate": 10.164835164835164,
+        "unique_proposers": 5
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 4.665140390802015,
+        "circulating_supply": 999999925.0,
+        "total_supply": 999999925.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.005090288590466641
+      },
+      "voting_efficiency": {
+        "total_proposals": 18,
+        "approved_proposals": 16,
+        "approval_rate": 88.88888888888889,
+        "avg_voting_duration_days": 3.17163387345679,
+        "proposal_states": {
+          "Unknown": 18
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 15.000001125000084,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 42,
+          "1-10": 9,
+          "10-100": 24,
+          "100-1000": 52,
+          "1000-10000": 117,
+          "10000+": 120
+        },
+        "proposer_concentration": 27.77777777777778
+      },
+      "health_metrics": {
+        "network_health_score": 3.140444159128232,
+        "activity_ratio": 0.0,
+        "total_volume": 2779297570.394786,
+        "mean_daily_volume": 5090288.590466641
+      }
+    },
+    {
+      "dao_name": "Radworks",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:08:45.271318",
+      "network_participation": {
+        "num_distinct_voters": 97,
+        "total_members": 8267,
+        "participation_rate": 1.1733397846861013,
+        "unique_proposers": 7
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 38642792.655117095,
+        "circulating_supply": 51575978.89552598,
+        "total_supply": 99998580.0,
+        "circulating_token_percentage": 51.576711284826224,
+        "token_velocity": 0.014706498155828212
+      },
+      "voting_efficiency": {
+        "total_proposals": 28,
+        "approved_proposals": 19,
+        "approval_rate": 67.85714285714286,
+        "avg_voting_duration_days": 0.2,
+        "proposal_states": {
+          "Unknown": 28
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 48.423288715173776,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 2578,
+          "1-10": 1336,
+          "10-100": 2980,
+          "100-1000": 933,
+          "1000-10000": 301,
+          "10000+": 139
+        },
+        "proposer_concentration": 25.0
+      },
+      "health_metrics": {
+        "network_health_score": 16.949722108377312,
+        "activity_ratio": 0.0,
+        "total_volume": 2220681221.53006,
+        "mean_daily_volume": 1470649.8155828211
+      }
+    },
+    {
+      "dao_name": "Silo",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:08:49.909780",
+      "network_participation": {
+        "num_distinct_voters": 209,
+        "total_members": 3204,
+        "participation_rate": 6.523096129837704,
+        "unique_proposers": 7
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 12431.185778,
+        "circulating_supply": 1000000000.0,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.005737645054230004
+      },
+      "voting_efficiency": {
+        "total_proposals": 58,
+        "approved_proposals": 53,
+        "approval_rate": 91.37931034482759,
+        "avg_voting_duration_days": 4.189843550446999,
+        "proposal_states": {
+          "Unknown": 58
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 46.713067699999996,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 904,
+          "1-10": 111,
+          "10-100": 186,
+          "100-1000": 1166,
+          "1000-10000": 464,
+          "10000+": 373
+        },
+        "proposer_concentration": 12.068965517241379
+      },
+      "health_metrics": {
+        "network_health_score": 15.560627051915509,
+        "activity_ratio": 0.0,
+        "total_volume": 6959763450.780994,
+        "mean_daily_volume": 5737645.054230004
+      }
+    },
+    {
+      "dao_name": "Idle",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:08:53.168701",
+      "network_participation": {
+        "num_distinct_voters": 75,
+        "total_members": 4371,
+        "participation_rate": 1.7158544955387784,
+        "unique_proposers": 7
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 13000000.0,
+        "total_supply": 13000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.007085218989157366
+      },
+      "voting_efficiency": {
+        "total_proposals": 42,
+        "approved_proposals": 40,
+        "approval_rate": 95.23809523809523,
+        "avg_voting_duration_days": 2.6,
+        "proposal_states": {
+          "Unknown": 42
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 20.0,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 1625,
+          "1-10": 553,
+          "10-100": 1312,
+          "100-1000": 647,
+          "1000-10000": 158,
+          "10000+": 76
+        },
+        "proposer_concentration": 16.666666666666664
+      },
+      "health_metrics": {
+        "network_health_score": 8.79700948872911,
+        "activity_ratio": 0.0,
+        "total_volume": 143043486.17209807,
+        "mean_daily_volume": 92107.84685904576
+      }
+    },
+    {
+      "dao_name": "KarratCo",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:09:56.061869",
+      "network_participation": {
+        "num_distinct_voters": 78,
+        "total_members": 8742,
+        "participation_rate": 0.8922443376801648,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 996999999.0,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 99.69999990000001,
+        "token_velocity": 0.026234556966042894
+      },
+      "voting_efficiency": {
+        "total_proposals": 6,
+        "approved_proposals": 0,
+        "approval_rate": 0.0,
+        "avg_voting_duration_days": 0.5833333333333334,
+        "proposal_states": {
+          "Unknown": 6
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 40.77326923086499,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 1204,
+          "1-10": 237,
+          "10-100": 756,
+          "100-1000": 2520,
+          "1000-10000": 3021,
+          "10000+": 1004
+        },
+        "proposer_concentration": 66.66666666666666
+      },
+      "health_metrics": {
+        "network_health_score": 18.60216510412408,
+        "activity_ratio": 0.0,
+        "total_volume": 4669751139.955635,
+        "mean_daily_volume": 13117278.483021447
+      }
+    },
+    {
+      "dao_name": "Pooh",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:10:00.078713",
+      "network_participation": {
+        "num_distinct_voters": 75,
+        "total_members": 22483,
+        "participation_rate": 0.3335853756171329,
+        "unique_proposers": 10
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 18916.05118353176,
+        "circulating_supply": 420690000000000.0,
+        "total_supply": 420690000000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.07410190006287797
+      },
+      "voting_efficiency": {
+        "total_proposals": 25,
+        "approved_proposals": 4,
+        "approval_rate": 16.0,
+        "avg_voting_duration_days": 7.583333333333332,
+        "proposal_states": {
+          "Unknown": 25
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 8.698023794129302,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 2676,
+          "1-10": 35,
+          "10-100": 39,
+          "100-1000": 25,
+          "1000-10000": 38,
+          "10000+": 19670
+        },
+        "proposer_concentration": 40.0
+      },
+      "health_metrics": {
+        "network_health_score": 11.81048637868203,
+        "activity_ratio": 0.0,
+        "total_volume": 2.219583697626591e+16,
+        "mean_daily_volume": 31173928337452.13
+      }
+    },
+    {
+      "dao_name": "Adventure Gold",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:10:02.737994",
+      "network_participation": {
+        "num_distinct_voters": 113,
+        "total_members": 117,
+        "participation_rate": 96.58119658119658,
+        "unique_proposers": 2
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 1202871.74,
+        "total_supply": 1202871.74,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.363091436801828
+      },
+      "voting_efficiency": {
+        "total_proposals": 5,
+        "approved_proposals": 2,
+        "approval_rate": 40.0,
+        "avg_voting_duration_days": 3.0,
+        "proposal_states": {
+          "Unknown": 5
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 573.944173798613,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 0,
+          "1-10": 7,
+          "10-100": 106,
+          "100-1000": 2,
+          "1000-10000": 0,
+          "10000+": 2
+        },
+        "proposer_concentration": 40.0
+      },
+      "health_metrics": {
+        "network_health_score": 19.062753342768442,
+        "activity_ratio": 0.0,
+        "total_volume": 15010496.28,
+        "mean_daily_volume": 938156.0175
+      }
+    },
+    {
+      "dao_name": "Degen Dogs",
+      "chain_id": 137,
+      "timestamp": "2025-04-06T19:13:07.613713",
+      "network_participation": {
+        "num_distinct_voters": 43,
+        "total_members": 56,
+        "participation_rate": 76.78571428571429,
+        "unique_proposers": 7
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 601.8360652449873,
+        "circulating_supply": 160.0,
+        "total_supply": 201.0,
+        "circulating_token_percentage": 79.60199004975125,
+        "token_velocity": 4.238993710691824
+      },
+      "voting_efficiency": {
+        "total_proposals": 24,
+        "approved_proposals": 10,
+        "approval_rate": 41.66666666666667,
+        "avg_voting_duration_days": 22.87037037037037,
+        "proposal_states": {
+          "Unknown": 24
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 20.398009950248756,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 31,
+          "1-10": 22,
+          "10-100": 3,
+          "100-1000": 0,
+          "1000-10000": 0,
+          "10000+": 0
+        },
+        "proposer_concentration": 29.166666666666668
+      },
+      "health_metrics": {
+        "network_health_score": -15.817508998660095,
+        "activity_ratio": 0,
+        "total_volume": 674,
+        "mean_daily_volume": 4.238993710691824
+      }
+    },
+    {
+      "dao_name": "Defi Gold DAO",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:13:10.214864",
+      "network_participation": {
+        "num_distinct_voters": 9,
+        "total_members": 66,
+        "participation_rate": 13.636363636363635,
+        "unique_proposers": 1
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 8762936.52784,
+        "total_supply": 8762936.52784,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.06959632164952381
+      },
+      "voting_efficiency": {
+        "total_proposals": 2,
+        "approved_proposals": 2,
+        "approval_rate": 100.0,
+        "avg_voting_duration_days": 1.5046296296296295,
+        "proposal_states": {
+          "Unknown": 2
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 71.89373082852747,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 0,
+          "1-10": 0,
+          "10-100": 1,
+          "100-1000": 1,
+          "1000-10000": 34,
+          "10000+": 30
+        },
+        "proposer_concentration": 50.0
+      },
+      "health_metrics": {
+        "network_health_score": 15.737358349273297,
+        "activity_ratio": 0,
+        "total_volume": 8769136.52784,
+        "mean_daily_volume": 438456.826392
+      }
+    },
+    {
+      "dao_name": "onchainaustria",
+      "chain_id": 42161,
+      "timestamp": "2025-04-06T19:13:15.042578",
+      "network_participation": {
+        "num_distinct_voters": 16,
+        "total_members": 11,
+        "participation_rate": 100.0,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 100000000.0,
+        "total_supply": 100000000.0,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 0.30315271827791523
+      },
+      "voting_efficiency": {
+        "total_proposals": 11,
+        "approved_proposals": 7,
+        "approval_rate": 63.63636363636363,
+        "avg_voting_duration_days": 0.125,
+        "proposal_states": {
+          "Unknown": 11
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 35.0,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 0,
+          "1-10": 0,
+          "10-100": 0,
+          "100-1000": 0,
+          "1000-10000": 0,
+          "10000+": 11
+        },
+        "proposer_concentration": 36.36363636363637
+      },
+      "health_metrics": {
+        "network_health_score": 12.944835385661925,
+        "activity_ratio": 0.0,
+        "total_volume": 210469051.340657,
+        "mean_daily_volume": 15033503.667189786
+      }
+    },
+    {
+      "dao_name": "Web3 Hackers Collective",
+      "chain_id": 10,
+      "timestamp": "2025-04-06T19:15:36.354069",
+      "network_participation": {
+        "num_distinct_voters": 13,
+        "total_members": 4,
+        "participation_rate": 100.0,
+        "unique_proposers": 1
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 983.8151584839776,
+        "circulating_supply": 4e-18,
+        "total_supply": 4e-18,
+        "circulating_token_percentage": 100.0,
+        "token_velocity": 1.6666666666666667
+      },
+      "voting_efficiency": {
+        "total_proposals": 9,
+        "approved_proposals": 9,
+        "approval_rate": 100.0,
+        "avg_voting_duration_days": 21.24269547325103,
+        "proposal_states": {
+          "Unknown": 9
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 2.4999999999999996e+19,
+        "on_chain_automation": "No",
+        "token_distribution": {
+          "0-1": 4,
+          "1-10": 0,
+          "10-100": 0,
+          "100-1000": 0,
+          "1000-10000": 0,
+          "10000+": 0
+        },
+        "proposer_concentration": 11.11111111111111
+      },
+      "health_metrics": {
+        "network_health_score": 21.156300445729283,
+        "activity_ratio": 0,
+        "total_volume": 5,
+        "mean_daily_volume": 1.6666666666666667
+      }
+    },
+    {
+      "dao_name": "Braintrust",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:15:39.398016",
+      "network_participation": {
+        "num_distinct_voters": 9,
+        "total_members": 3982,
+        "participation_rate": 0.22601707684580613,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 4830050.148563903,
+        "circulating_supply": 233879198.21183148,
+        "total_supply": 250000000.0,
+        "circulating_token_percentage": 93.55167928473259,
+        "token_velocity": 0.007996198302619438
+      },
+      "voting_efficiency": {
+        "total_proposals": 7,
+        "approved_proposals": 3,
+        "approval_rate": 42.857142857142854,
+        "avg_voting_duration_days": 2.6,
+        "proposal_states": {
+          "Unknown": 7
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 6.9999956,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 713,
+          "1-10": 563,
+          "10-100": 826,
+          "100-1000": 974,
+          "1000-10000": 480,
+          "10000+": 426
+        },
+        "proposer_concentration": 57.14285714285714
+      },
+      "health_metrics": {
+        "network_health_score": 13.933330948108608,
+        "activity_ratio": 0.0,
+        "total_volume": 2620753993.6835217,
+        "mean_daily_volume": 1999049.5756548594
+      }
+    },
+    {
+      "dao_name": "Diva Staking",
+      "chain_id": 1,
+      "timestamp": "2025-04-06T19:15:42.371674",
+      "network_participation": {
+        "num_distinct_voters": 1168,
+        "total_members": 4553,
+        "participation_rate": 25.653415330551283,
+        "unique_proposers": 4
+      },
+      "accumulated_funds": {
+        "treasury_value_usd": 0.0,
+        "circulating_supply": 633359600.0,
+        "total_supply": 1000000000.0,
+        "circulating_token_percentage": 63.33596,
+        "token_velocity": 0.06254173218657658
+      },
+      "voting_efficiency": {
+        "total_proposals": 11,
+        "approved_proposals": 8,
+        "approval_rate": 72.72727272727273,
+        "avg_voting_duration_days": 0.16666666666666666,
+        "proposal_states": {
+          "Unknown": 11
+        }
+      },
+      "decentralisation": {
+        "largest_holder_percent": 36.66404,
+        "on_chain_automation": "Yes",
+        "token_distribution": {
+          "0-1": 0,
+          "1-10": 0,
+          "10-100": 0,
+          "100-1000": 0,
+          "1000-10000": 0,
+          "10000+": 4553
+        },
+        "proposer_concentration": 36.36363636363637
+      },
+      "health_metrics": {
+        "network_health_score": 19.22936425711202,
+        "activity_ratio": 0,
+        "total_volume": 1106000000.0,
+        "mean_daily_volume": 20867924.528301887
+      }
+    }
+  ]
