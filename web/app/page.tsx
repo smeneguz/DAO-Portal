@@ -46,8 +46,11 @@ export default function Home() {
   const chainIds = daos ? Array.from(new Set(daos.map(dao => dao.chain_id))) : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-muted/40">
-      <div className="container mx-auto py-6 px-4 max-w-7xl">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/98 to-muted/20 relative">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] dark:bg-grid-slate-700/25 dark:[mask-image:linear-gradient(0deg,rgba(255,255,255,0.1),rgba(255,255,255,0.5))]"></div>
+      
+      <div className="container mx-auto py-6 px-4 max-w-7xl relative z-10">
         {/* Enhanced Hero Section - Mobile-First Responsive */}
         <div className="mb-8 text-center relative">
           {/* Background decoration - smaller and more subtle */}
@@ -366,57 +369,6 @@ export default function Home() {
             </p>
           </div>
         )}
-
-        {/* Enhanced Performance Metrics - Mobile-First Responsive */}
-        <div className="stats-grid stagger-animation mb-8">
-          <div className="metric-card">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="metric-label">Total DAOs</p>
-                <p className="metric-number">{daos ? daos.length : 0}</p>
-              </div>
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-blue-500/10 to-primary/10 flex items-center justify-center">
-                <DashboardIcon className="text-primary" />
-              </div>
-            </div>
-          </div>
-
-          <div className="metric-card">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="metric-label">Active Chains</p>
-                <p className="metric-number">{chainIds.length}</p>
-              </div>
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 flex items-center justify-center">
-                <DecentralizationIcon className="text-green-600" />
-              </div>
-            </div>
-          </div>
-
-          <div className="metric-card">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="metric-label">Selected</p>
-                <p className="metric-number">{selectedDAOIds.length}</p>
-              </div>
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 flex items-center justify-center">
-                <SuccessIcon className="text-purple-600" />
-              </div>
-            </div>
-          </div>
-
-          <div className="metric-card">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="metric-label">Governance</p>
-                <p className="metric-number">Active</p>
-              </div>
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 flex items-center justify-center">
-                <VotingIcon className="text-amber-600" />
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
