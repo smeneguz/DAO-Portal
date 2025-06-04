@@ -295,7 +295,7 @@ export const MultiDAODecentralizationChart: React.FC<MultiDAODecentralizationCha
             <li><span className="inline-block w-3 h-3 bg-red-600 mr-2"></span> <strong>Low:</strong> Largest holder over 66%</li>
             <li><span className="inline-block w-3 h-3 bg-orange-500 mr-2"></span> <strong>Medium-Low:</strong> Largest holder between 33-66%</li>
             <li><span className="inline-block w-3 h-3 bg-lime-500 mr-2"></span> <strong>Medium:</strong> Largest holder between 10-33%, low participation or no automation</li>
-            <li><span className="inline-block w-3 h-3 bg-green-500 mr-2"></span> <strong>Medium-High:</strong> Largest holder between 10-33%, >10% participation, with automation</li>
+            <li><span className="inline-block w-3 h-3 bg-green-500 mr-2"></span> <strong>Medium-High:</strong> Largest holder between 10-33%, {'>'}10% participation, with automation</li>
             <li><span className="inline-block w-3 h-3 bg-green-800 mr-2"></span> <strong>High:</strong> Largest holder under 10%</li>
           </ul>
           <p className="italic">

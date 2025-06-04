@@ -105,9 +105,10 @@ const ParticipationChart: React.FC<ParticipationChartProps> = ({ data }) => {
           />
           <Tooltip 
             formatter={(value, name) => {
-              if (name === 'participationRate') return [`${value.toFixed(2)}%`, 'Participation Rate'];
-              if (name === 'voters') return [value.toLocaleString(), 'Distinct Voters'];
-              if (name === 'totalMembers') return [value.toLocaleString(), 'Total Members'];
+              const numValue = typeof value === 'string' ? parseFloat(value) : typeof value === 'number' ? value : 0;
+              if (name === 'participationRate') return [`${numValue.toFixed(2)}%`, 'Participation Rate'];
+              if (name === 'voters') return [numValue.toLocaleString(), 'Distinct Voters'];
+              if (name === 'totalMembers') return [numValue.toLocaleString(), 'Total Members'];
               return [value, name];
             }}
           />

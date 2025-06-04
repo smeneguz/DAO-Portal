@@ -1,6 +1,6 @@
 // components/charts/TreasuryChart.tsx
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
 interface TreasuryChartProps {
   data: any;
@@ -62,9 +62,12 @@ const TreasuryChart: React.FC<TreasuryChartProps> = ({ data }) => {
         />
         <Bar 
           dataKey="value" 
-          fill={(entry) => entry.color}
           radius={[0, 4, 4, 0]}
-        />
+        >
+          {chartData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={entry.color} />
+          ))}
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   );
