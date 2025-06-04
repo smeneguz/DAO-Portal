@@ -8,6 +8,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import Link from 'next/link';
 import { useDAOSelection } from '../lib/context/DAOSelectionContext';
+import { formatTreasuryValue, formatParticipationRate, formatMemberCount, formatHealthScore } from '../lib/utils/formatters';
 import { 
   DashboardIcon, 
   SearchIcon, 
@@ -313,24 +314,24 @@ export default function Home() {
                         <div className="grid grid-cols-2 gap-3 text-xs">
                           <div className="space-y-1">
                             <p className="text-muted-foreground font-medium">Members</p>
-                            <p className="font-bold text-sm text-foreground">{dao.total_members?.toLocaleString() || 'N/A'}</p>
+                            <p className="font-bold text-sm text-foreground">{formatMemberCount(dao.total_members)}</p>
                           </div>
                           <div className="space-y-1">
                             <p className="text-muted-foreground font-medium">Participation</p>
                             <p className="font-bold text-sm text-foreground">
-                              {dao.participation_rate ? `${(dao.participation_rate * 100).toFixed(1)}%` : 'N/A'}
+                              {formatParticipationRate(dao.participation_rate)}
                             </p>
                           </div>
                           <div className="space-y-1">
                             <p className="text-muted-foreground font-medium">Treasury</p>
                             <p className="font-bold text-sm text-foreground">
-                              {dao.treasury_value_usd ? `$${(dao.treasury_value_usd / 1000000).toFixed(1)}M` : 'N/A'}
+                              {formatTreasuryValue(dao.treasury_value_usd)}
                             </p>
                           </div>
                           <div className="space-y-1">
                             <p className="text-muted-foreground font-medium">Health Score</p>
                             <p className="font-bold text-sm text-foreground">
-                              {dao.network_health_score ? dao.network_health_score.toFixed(1) : 'N/A'}
+                              {formatHealthScore(dao.network_health_score)}
                             </p>
                           </div>
                         </div>

@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Search, ArrowUpDown } from "lucide-react"
 import { useDAOsQuery } from "../../lib/hooks/useDAOsQuery"
+import { formatTreasuryValue, formatParticipationRate, formatMemberCount, getParticipationRateColor } from "../../lib/utils/formatters"
 import {
   ErrorIcon,
   EmptyStateIcon,
@@ -150,7 +151,7 @@ export default function DAOListPage() {
                       <div className="flex items-center gap-2">
                         <ParticipationIcon className="text-muted-foreground" size="xs" />
                         <span className="font-medium text-foreground">
-                          {dao.total_members ? dao.total_members.toLocaleString() : 'N/A'}
+                          {formatMemberCount(dao.total_members)}
                         </span>
                       </div>
                     </TableCell>
@@ -158,23 +159,15 @@ export default function DAOListPage() {
                       <div className="flex items-center gap-2">
                         <TreasuryIcon className="text-muted-foreground" size="xs" />
                         <span className="font-medium">
-                          {dao.treasury_value_usd ? `$${dao.treasury_value_usd.toLocaleString()}` : 'N/A'}
+                          {formatTreasuryValue(dao.treasury_value_usd)}
                         </span>
                       </div>
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        <div className={`w-2 h-2 rounded-full ${
-                          dao.participation_rate 
-                            ? dao.participation_rate > 10 
-                              ? 'bg-green-500' 
-                              : dao.participation_rate > 5 
-                                ? 'bg-yellow-500' 
-                                : 'bg-red-500'
-                            : 'bg-gray-300'
-                        }`}></div>
+                        <div className={`w-2 h-2 rounded-full ${getParticipationRateColor(dao.participation_rate)}`}></div>
                         <span className="font-medium">
-                          {dao.participation_rate ? `${(dao.participation_rate * 100).toFixed(1)}%` : 'N/A'}
+                          {formatParticipationRate(dao.participation_rate)}
                         </span>
                       </div>
                     </TableCell>
