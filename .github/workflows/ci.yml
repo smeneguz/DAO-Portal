@@ -2,42 +2,98 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
     
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_USER: test_user
+          POSTGRES_DB: test_db
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+    
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
+      # Backend Testing
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: '3.11'
+          
+      - name: Cache Poetry dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pypoetry
+          key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
           
       - name: Install Poetry
         run: |
           curl -sSL https://install.python-poetry.org | python3 -
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          
+      - name: Configure Poetry
+        run: |
+          poetry config virtualenvs.create true
+          poetry config virtualenvs.in-project true
           
       - name: Install backend dependencies
         working-directory: ./backend
         run: |
-          poetry install
+          poetry install --no-interaction --no-ansi
+          
+      - name: Run backend linting
+        working-directory: ./backend
+        run: |
+          poetry run black --check .
+          poetry run isort --check-only .
+          poetry run ruff check .
           
       - name: Run backend tests
         working-directory: ./backend
+        env:
+          DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
+          REDIS_URL: redis://localhost:6379
+          ENVIRONMENT: test
         run: |
-          poetry run pytest
+          poetry run pytest --cov=app --cov-report=xml --cov-report=term-missing
           
+      # Frontend Testing
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: './web/package-lock.json'
           
       - name: Install frontend dependencies
         working-directory: ./web
@@ -49,66 +105,243 @@ jobs:
         run: |
           npm run lint
           
+      - name: Run frontend type checking
+        working-directory: ./web
+        run: |
+          npx tsc --noEmit
+          
+      - name: Build frontend
+        working-directory: ./web
+        env:
+          NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+        run: |
+          npm run build
+          
+      # Upload test coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./backend/coverage.xml
+          fail_ci_if_error: false
+
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          
+      - name: Upload Trivy scan results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
   build-and-push:
     name: Build and Push Docker Images
-    needs: test
+    needs: [test, security-scan]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    
+    outputs:
+      backend-image: ${{ steps.backend-meta.outputs.tags }}
+      frontend-image: ${{ steps.frontend-meta.outputs.tags }}
+      backend-digest: ${{ steps.backend-build.outputs.digest }}
+      frontend-digest: ${{ steps.frontend-build.outputs.digest }}
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
         
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
+      - name: Log in to Container Registry
+        uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           
+      - name: Extract backend metadata
+        id: backend-meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/backend
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
+          
       - name: Build and push backend image
-        uses: docker/build-push-action@v4
+        id: backend-build
+        uses: docker/build-push-action@v5
         with:
           context: ./backend
           push: true
-          tags: |
-            ghcr.io/${{ github.repository }}/backend:latest
-            ghcr.io/${{ github.repository }}/backend:${{ github.sha }}
+          tags: ${{ steps.backend-meta.outputs.tags }}
+          labels: ${{ steps.backend-meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+          
+      - name: Extract frontend metadata
+        id: frontend-meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/frontend
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,prefix={{branch}}-
+            type=raw,value=latest,enable={{is_default_branch}}
           
       - name: Build and push frontend image
-        uses: docker/build-push-action@v4
+        id: frontend-build
+        uses: docker/build-push-action@v5
         with:
           context: ./web
           push: true
-          tags: |
-            ghcr.io/${{ github.repository }}/frontend:latest
-            ghcr.io/${{ github.repository }}/frontend:${{ github.sha }}
+          tags: ${{ steps.frontend-meta.outputs.tags }}
+          labels: ${{ steps.frontend-meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
-  deploy:
-    name: Deploy to Server
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
+
+  deploy-staging:
+    name: Deploy to Staging
     needs: build-and-push
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    environment: staging
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         
-      - name: Deploy to server
-        uses: appleboy/ssh-action@master
+      - name: Deploy to staging server
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.SSH_HOST }}
+          host: ${{ secrets.STAGING_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
           script: |
-            cd /path/to/dao-portal
-            git pull
+            cd ${{ secrets.DEPLOY_PATH }}/staging
+            
+            # Pull latest changes
+            git pull origin develop
+            
+            # Update environment
+            cp .env.staging .env
+            
+            # Pull new images
             docker compose pull
-            docker compose up -d
+            
+            # Deploy with zero downtime
+            docker compose up -d --remove-orphans
+            
+            # Health check
+            sleep 30
+            curl -f http://localhost:3000/health || exit 1
+            curl -f http://localhost:8000/health || exit 1
+
+  deploy-production:
+    name: Deploy to Production
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Deploy to production server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.PRODUCTION_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            cd ${{ secrets.DEPLOY_PATH }}/production
+            
+            # Create backup
+            docker compose exec -T postgres pg_dump -U $POSTGRES_USER $POSTGRES_DB > backup_$(date +%Y%m%d_%H%M%S).sql
+            
+            # Pull latest changes
+            git pull origin main
+            
+            # Update environment
+            cp .env.production .env
+            
+            # Pull new images
+            docker compose pull
+            
+            # Blue-Green Deployment
+            # Start new containers with different names
+            docker compose -f docker-compose.yml -f docker-compose.blue-green.yml up -d --remove-orphans
+            
+            # Health check on new containers
+            sleep 60
+            
+            # Check if new services are healthy
+            for i in {1..10}; do
+              if curl -f http://localhost:3001/health && curl -f http://localhost:8001/health; then
+                echo "New services are healthy"
+                break
+              fi
+              if [ $i -eq 10 ]; then
+                echo "Health check failed, rolling back"
+                docker compose -f docker-compose.yml -f docker-compose.blue-green.yml down
+                exit 1
+              fi
+              sleep 10
+            done
+            
+            # Update load balancer to point to new services
+            # This would update your nginx/traefik/etc configuration
+            ./scripts/switch-traffic.sh
+            
+            # Wait for traffic to drain from old services
+            sleep 30
+            
+            # Stop old services
+            docker compose down --remove-orphans
+            
+            # Start new services on standard ports
+            docker compose up -d --remove-orphans
+            
+            # Final health check
+            curl -f http://localhost:3000/health || exit 1
+            curl -f http://localhost:8000/health || exit 1
+            
+            # Clean up old images
+            docker image prune -f
+
+  notify:
+    name: Notify Deployment
+    needs: [deploy-staging, deploy-production]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Notify Slack
+        uses: 8398a7/action-slack@v3
+        if: always()
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}

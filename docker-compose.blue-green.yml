@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  # Blue-Green deployment services
+  frontend-new:
+    image: ghcr.io/${GITHUB_REPOSITORY}/frontend:latest
+    container_name: dao-portal-frontend-new
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    depends_on:
+      - backend-new
+    restart: unless-stopped
+
+  backend-new:
+    image: ghcr.io/${GITHUB_REPOSITORY}/backend:latest
+    container_name: dao-portal-backend-new
+    ports:
+      - "8001:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=false
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: dao-portal_default
