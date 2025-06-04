@@ -12,7 +12,8 @@ import {
   FilterIcon,
   ParticipationIcon,
   DecentralizationIcon,
-  SuccessIcon
+  SuccessIcon,
+  SustainabilityIcon
 } from './ui/icons';
 
 const Navbar = () => {
@@ -71,6 +72,12 @@ const Navbar = () => {
                         {selectedDAOIds.length}
                       </span>
                     )}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dao/sustainability" className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-muted/60 hover:text-primary">
+                    <SustainabilityIcon size="xs" />
+                    <span>Sustainability</span>
                   </Link>
                 </li>
               </ul>
