@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useDAOs } from '../lib/hooks/useDAOs';
+import { useDAOsQuery } from '../lib/hooks/useDAOsQuery';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -29,7 +29,7 @@ export default function Home() {
   const [chainFilter, setChainFilter] = useState<string | undefined>(undefined);
   const [refreshKey, setRefreshKey] = useState(0);
   
-  const { data: daos, isLoading, error } = useDAOs({
+  const { data: daos, isLoading, error } = useDAOsQuery({
     searchQuery,
     chainId: chainFilter
   });
@@ -43,7 +43,7 @@ export default function Home() {
   }, [selectedDAOIds.length]);
 
   // Extract unique chain IDs for filtering
-  const chainIds = daos ? Array.from(new Set(daos.map(dao => dao.chain_id))) : [];
+  const chainIds = daos ? Array.from(new Set(daos.map(dao => dao.chain_id))).filter(Boolean) : [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/98 to-muted/20 relative">
@@ -116,7 +116,7 @@ export default function Home() {
                   <span className="hidden sm:inline">All Chains</span>
                   <span className="sm:hidden">All</span>
                 </Button>
-                {chainIds.map(chainId => (
+                {chainIds.map((chainId: string) => (
                   <Button
                     key={chainId}
                     variant={chainFilter === chainId ? "default" : "outline"}

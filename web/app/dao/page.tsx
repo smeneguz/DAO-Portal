@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Search, ArrowUpDown } from "lucide-react"
-import { useDAOs } from "../../lib/hooks/useDAOs"
+import { useDAOsQuery } from "../../lib/hooks/useDAOsQuery"
 import {
   ErrorIcon,
   EmptyStateIcon,
@@ -19,7 +19,7 @@ export default function DAOListPage() {
   const [currentOffset, setCurrentOffset] = useState(0)
   const limit = 20
   
-  const { data, isLoading, error, totalCount } = useDAOs({ 
+  const { data, isLoading, error, totalCount } = useDAOsQuery({ 
     searchQuery: searchQuery || undefined,
     chainId: chainFilter,
     limit,

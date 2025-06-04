@@ -1,0 +1,1257 @@
+# DAO PORTAL - TECHNICAL DOCUMENTATION
+================================================================================
+Date: June 4, 2025
+Version: 1.0
+Author: Technical Documentation Team
+
+## TABLE OF CONTENTS
+================================================================================
+1. PROJECT OVERVIEW
+2. SYSTEM ARCHITECTURE
+3. BACKEND ARCHITECTURE
+4. FRONTEND ARCHITECTURE
+5. DATABASE DESIGN
+6. API DESIGN
+7. DEVELOPMENT CHOICES & LIBRARIES
+8. DEVELOPMENT WORKFLOW
+9. TESTING STRATEGY
+10. PRODUCTION DEPLOYMENT
+11. MONITORING & MAINTENANCE
+12. TROUBLESHOOTING GUIDE
+
+## 1. PROJECT OVERVIEW
+================================================================================
+The DAO Portal is a comprehensive analytics and monitoring platform for 
+Decentralized Autonomous Organizations (DAOs). It provides real-time insights, 
+comparative analysis, and detailed metrics for DAO governance, treasury 
+management, and community participation.
+
+### Key Features:
+- Multi-DAO comparison and analysis
+- Real-time governance metrics
+- Treasury and token distribution tracking
+- Interactive data visualizations
+- Responsive web interface
+- RESTful API for external integrations
+
+### Technology Stack:
+- Frontend: Next.js 14 (React), TypeScript, Tailwind CSS
+- Backend: FastAPI (Python), SQLAlchemy ORM
+- Database: PostgreSQL
+- Containerization: Docker & Docker Compose
+- API Documentation: OpenAPI/Swagger
+- Data Processing: Pandas, Celery (async tasks)
+
+## 2. SYSTEM ARCHITECTURE
+================================================================================
+
+### High-Level Architecture:
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   Database      │
+│   (Next.js)     │◄──►│   (FastAPI)     │◄──►│  (PostgreSQL)   │
+│   Port: 3000    │    │   Port: 8000    │    │   Port: 5432    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                        │                        │
+         │                        │                        │
+         ▼                        ▼                        ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Static Files  │    │   Background    │    │   Data Storage  │
+│   & Assets      │    │   Workers       │    │   & Backups     │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+### Microservices Approach:
+- **Frontend Service**: User interface and client-side logic
+- **Backend API Service**: Business logic and data processing
+- **Database Service**: Data persistence and queries
+- **Worker Service**: Background tasks and data synchronization
+
+### Communication Patterns:
+- Frontend ↔ Backend: HTTP/HTTPS RESTful API
+- Backend ↔ Database: SQL via SQLAlchemy ORM
+- Worker Tasks: Celery with Redis/RabbitMQ message broker
+
+## 3. BACKEND ARCHITECTURE
+================================================================================
+
+### Framework Choice: FastAPI
+**Rationale:**
+- High performance (comparable to Node.js and Go)
+- Automatic API documentation generation
+- Type hints and data validation
+- Async/await support for concurrent operations
+- Easy integration with modern Python ecosystem
+
+### Directory Structure:
+```
+backend/
+├── app/
+│   ├── main.py              # Application entry point
+│   ├── api/
+│   │   ├── schemas.py       # Pydantic models for request/response
+│   │   └── v1/
+│   │       ├── dao.py       # DAO endpoints
+│   │       ├── metrics.py   # Metrics endpoints
+│   │       └── enhanced_metrics.py # Advanced analytics
+│   ├── core/
+│   │   └── config.py        # Configuration management
+│   ├── db/
+│   │   ├── models.py        # SQLAlchemy database models
+│   │   ├── session.py       # Database session management
+│   │   └── session_sync.py  # Synchronous database operations
+│   ├── scripts/
+│   │   └── import_dao_data.py # Data import utilities
+│   └── workers/
+│       ├── celery_app.py    # Celery configuration
+│       └── tasks.py         # Background task definitions
+├── tests/
+│   └── test_api.py          # API endpoint tests
+├── requirements.txt         # Python dependencies
+├── pyproject.toml          # Python project configuration
+└── Dockerfile              # Container configuration
+```
+
+### Key Libraries & Their Purpose:
+
+#### Core Framework:
+- **FastAPI (0.104.1)**: Main web framework
+- **Uvicorn**: ASGI server for FastAPI
+- **Pydantic**: Data validation and serialization
+
+#### Database & ORM:
+- **SQLAlchemy (2.0+)**: Object-Relational Mapping
+- **Asyncpg**: Async PostgreSQL driver
+- **Alembic**: Database migrations
+
+#### Data Processing:
+- **Pandas**: Data manipulation and analysis
+- **NumPy**: Numerical computations
+- **Scipy**: Statistical analysis
+
+#### Background Processing:
+- **Celery**: Distributed task queue
+- **Redis/RabbitMQ**: Message broker
+
+#### API & Documentation:
+- **OpenAPI**: API specification
+- **Swagger UI**: Interactive API documentation
+
+### Database Models Design:
+
+#### DAO Model:
+```python
+class DAO(Base):
+    __tablename__ = "daos"
+    
+    id: int (Primary Key)
+    name: str (Unique, Indexed)
+    description: str
+    chain: str (Indexed)
+    token_symbol: str
+    governance_token: str
+    treasury_value: Decimal
+    total_members: int
+    active_proposals: int
+    total_proposals: int
+    participation_rate: float
+    created_at: datetime
+    updated_at: datetime
+```
+
+#### Metrics Model:
+```python
+class DAOMetrics(Base):
+    __tablename__ = "dao_metrics"
+    
+    id: int (Primary Key)
+    dao_id: int (Foreign Key)
+    metric_type: str
+    value: Decimal
+    timestamp: datetime
+    metadata: JSON
+```
+
+### API Design Patterns:
+
+#### RESTful Endpoints:
+- GET /api/v1/daos - List all DAOs with pagination
+- GET /api/v1/daos/{id} - Get specific DAO details
+- GET /api/v1/daos/{id}/metrics - Get DAO metrics
+- GET /api/v1/metrics/comparison - Multi-DAO comparison
+- GET /api/v1/metrics/enhanced - Advanced analytics
+
+#### Response Format:
+```json
+{
+  "status": "success",
+  "data": {...},
+  "message": "Operation completed successfully",
+  "pagination": {
+    "page": 1,
+    "per_page": 20,
+    "total": 150,
+    "pages": 8
+  }
+}
+```
+
+#### Error Handling:
+```json
+{
+  "status": "error",
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Invalid input parameters",
+    "details": {...}
+  }
+}
+```
+
+## 4. FRONTEND ARCHITECTURE
+================================================================================
+
+### Framework Choice: Next.js 14
+**Rationale:**
+- Server-Side Rendering (SSR) for better SEO
+- Static Site Generation (SSG) for performance
+- Built-in API routes
+- Excellent TypeScript support
+- Automatic code splitting and optimization
+- App Router for modern routing patterns
+
+### Directory Structure:
+```
+web/
+├── app/
+│   ├── layout.tsx           # Root layout component
+│   ├── page.tsx             # Home page
+│   ├── globals.css          # Global styles
+│   ├── providers.tsx        # Context providers
+│   ├── dao/
+│   │   ├── page.tsx         # All DAOs listing
+│   │   ├── [id]/
+│   │   │   └── page.tsx     # Individual DAO details
+│   │   └── compare/
+│   │       └── page.tsx     # DAO comparison
+│   └── api/
+│       └── test-connectivity/
+│           └── route.ts     # API route handlers
+├── components/
+│   ├── ui/                  # Reusable UI components
+│   ├── charts/              # Data visualization components
+│   ├── dao/                 # DAO-specific components
+│   └── layout/              # Layout components
+├── lib/
+│   ├── hooks/               # Custom React hooks
+│   ├── context/             # React context providers
+│   └── utils.ts             # Utility functions
+├── public/                  # Static assets
+├── package.json             # Dependencies
+├── tailwind.config.js       # Tailwind CSS configuration
+├── postcss.config.js        # PostCSS configuration
+└── tsconfig.json            # TypeScript configuration
+```
+
+### Key Libraries & Their Purpose:
+
+#### Core Framework:
+- **Next.js (14.0.3)**: React framework with SSR/SSG
+- **React (18+)**: UI library
+- **TypeScript**: Type safety and developer experience
+
+#### Styling:
+- **Tailwind CSS (3.3.0)**: Utility-first CSS framework
+- **PostCSS**: CSS processing
+- **Autoprefixer**: Automatic vendor prefixes
+- **clsx**: Conditional className utility
+- **tailwind-merge**: Tailwind class merging
+
+#### UI Components:
+- **Radix UI**: Accessible, unstyled UI primitives
+  - @radix-ui/react-checkbox
+  - @radix-ui/react-dropdown-menu
+  - @radix-ui/react-tabs
+  - @radix-ui/react-slot
+- **Lucide React**: Icon library
+- **class-variance-authority**: Component variant management
+
+#### Data Visualization:
+- **Recharts (2.15.3)**: React charting library
+- **D3.js concepts**: Mathematical computations for charts
+
+#### State Management:
+- **React Query (@tanstack/react-query)**: Server state management
+- **React Context**: Global state management
+- **Local Storage**: Client-side persistence
+
+#### Data Handling:
+- **React Table (@tanstack/react-table)**: Table management
+- **Date-fns**: Date manipulation
+- **Lodash**: Utility functions
+- **Zod**: Runtime type validation
+
+#### Theming:
+- **next-themes**: Dark/light mode support
+
+### Component Architecture:
+
+#### Atomic Design Pattern:
+```
+Atoms → Molecules → Organisms → Templates → Pages
+```
+
+#### Examples:
+- **Atoms**: Button, Input, Icon
+- **Molecules**: SearchBox, MetricCard
+- **Organisms**: Navbar, DataTable, Chart
+- **Templates**: PageLayout, DashboardLayout
+- **Pages**: HomePage, DAODetailsPage
+
+### State Management Strategy:
+
+#### Server State (React Query):
+```typescript
+// Custom hook for DAO data
+const useDAOs = () => {
+  return useQuery({
+    queryKey: ['daos'],
+    queryFn: fetchDAOs,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    cacheTime: 10 * 60 * 1000, // 10 minutes
+  });
+};
+```
+
+#### Client State (Context + Hooks):
+```typescript
+// DAO Selection Context
+const DAOSelectionContext = createContext({
+  selectedDAOs: [],
+  toggleDAO: (id: string) => {},
+  clearSelection: () => {},
+});
+```
+
+### Responsive Design Strategy:
+- Mobile-first approach
+- Tailwind responsive breakpoints
+- Adaptive layouts for different screen sizes
+- Touch-friendly interactions on mobile
+
+## 5. DATABASE DESIGN
+================================================================================
+
+### Database Choice: PostgreSQL
+**Rationale:**
+- ACID compliance for data integrity
+- Advanced indexing capabilities
+- JSON/JSONB support for flexible data
+- Excellent performance for analytical queries
+- Robust ecosystem and community support
+
+### Schema Design:
+
+#### Primary Tables:
+```sql
+-- DAOs table
+CREATE TABLE daos (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) UNIQUE NOT NULL,
+    description TEXT,
+    chain VARCHAR(100) NOT NULL,
+    token_symbol VARCHAR(20),
+    governance_token VARCHAR(100),
+    treasury_value DECIMAL(20,2),
+    total_members INTEGER DEFAULT 0,
+    active_proposals INTEGER DEFAULT 0,
+    total_proposals INTEGER DEFAULT 0,
+    participation_rate FLOAT DEFAULT 0.0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Metrics table for time-series data
+CREATE TABLE dao_metrics (
+    id SERIAL PRIMARY KEY,
+    dao_id INTEGER REFERENCES daos(id) ON DELETE CASCADE,
+    metric_type VARCHAR(100) NOT NULL,
+    value DECIMAL(20,4),
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    metadata JSONB
+);
+
+-- Proposals table
+CREATE TABLE proposals (
+    id SERIAL PRIMARY KEY,
+    dao_id INTEGER REFERENCES daos(id) ON DELETE CASCADE,
+    title VARCHAR(500) NOT NULL,
+    description TEXT,
+    status VARCHAR(50) NOT NULL,
+    votes_for INTEGER DEFAULT 0,
+    votes_against INTEGER DEFAULT 0,
+    total_votes INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    voting_ends_at TIMESTAMP
+);
+```
+
+#### Indexes for Performance:
+```sql
+-- Primary indexes
+CREATE INDEX idx_daos_name ON daos(name);
+CREATE INDEX idx_daos_chain ON daos(chain);
+CREATE INDEX idx_dao_metrics_dao_id ON dao_metrics(dao_id);
+CREATE INDEX idx_dao_metrics_type ON dao_metrics(metric_type);
+CREATE INDEX idx_dao_metrics_timestamp ON dao_metrics(timestamp);
+
+-- Composite indexes
+CREATE INDEX idx_metrics_dao_type_time ON dao_metrics(dao_id, metric_type, timestamp);
+```
+
+### Data Import Strategy:
+- JSON data import scripts
+- Batch processing for large datasets
+- Data validation and cleanup
+- Incremental updates for real-time data
+
+## 6. API DESIGN
+================================================================================
+
+### RESTful API Principles:
+- Resource-based URLs
+- HTTP methods for CRUD operations
+- Stateless requests
+- Consistent response formats
+- Proper HTTP status codes
+
+### API Versioning:
+- URL path versioning: `/api/v1/`
+- Backward compatibility maintenance
+- Deprecation warnings for old versions
+
+### Endpoint Documentation:
+
+#### DAO Endpoints:
+```
+GET    /api/v1/daos
+POST   /api/v1/daos
+GET    /api/v1/daos/{id}
+PUT    /api/v1/daos/{id}
+DELETE /api/v1/daos/{id}
+```
+
+#### Metrics Endpoints:
+```
+GET /api/v1/daos/{id}/metrics
+GET /api/v1/metrics/comparison?dao_ids=1,2,3
+GET /api/v1/metrics/enhanced?type=treasury&period=30d
+```
+
+### Authentication & Authorization:
+- JWT token-based authentication
+- Role-based access control (RBAC)
+- API key management for external integrations
+
+### Rate Limiting:
+- Request rate limits per endpoint
+- User-based and IP-based limiting
+- Graceful degradation for exceeded limits
+
+## 7. DEVELOPMENT CHOICES & LIBRARIES
+================================================================================
+
+### Backend Technology Choices:
+
+#### Why FastAPI over Django/Flask:
+**Pros:**
+- Modern async/await support
+- Automatic API documentation
+- Built-in data validation
+- High performance
+- Type hints integration
+
+**Cons:**
+- Smaller ecosystem compared to Django
+- Less mature for large enterprise applications
+
+#### Why SQLAlchemy 2.0:
+- Modern async support
+- Powerful ORM capabilities
+- Type safety improvements
+- Flexible query building
+
+#### Why PostgreSQL:
+- ACID compliance
+- Advanced indexing
+- JSON support
+- Analytical query performance
+- Extensibility
+
+### Frontend Technology Choices:
+
+#### Why Next.js over Create React App:
+**Pros:**
+- Server-side rendering
+- Built-in optimization
+- File-based routing
+- API routes
+- Production-ready configuration
+
+**Cons:**
+- Steeper learning curve
+- More complex deployment
+
+#### Why Tailwind CSS over styled-components:
+**Pros:**
+- Utility-first approach
+- Smaller bundle size
+- Design consistency
+- Rapid development
+- Responsive design utilities
+
+**Cons:**
+- Learning curve for developers
+- Potential for class name bloat
+
+#### Why React Query over Redux:
+**Pros:**
+- Server state management
+- Automatic caching
+- Background updates
+- Error handling
+- Optimistic updates
+
+**Cons:**
+- Additional dependency
+- Learning curve
+
+### Development Tools:
+
+#### Code Quality:
+- **ESLint**: JavaScript/TypeScript linting
+- **Prettier**: Code formatting
+- **TypeScript**: Type safety
+- **Pre-commit hooks**: Automated quality checks
+
+#### Testing:
+- **Pytest**: Python testing framework
+- **Jest**: JavaScript testing framework
+- **React Testing Library**: Component testing
+- **Cypress**: End-to-end testing
+
+#### Documentation:
+- **OpenAPI/Swagger**: API documentation
+- **Storybook**: Component documentation
+- **README files**: Project documentation
+
+## 8. DEVELOPMENT WORKFLOW
+================================================================================
+
+### Git Workflow:
+```
+main (production)
+├── develop (integration)
+├── feature/dao-analytics
+├── feature/user-authentication
+├── bugfix/chart-rendering
+└── hotfix/security-patch
+```
+
+### Branch Strategy:
+- **main**: Production-ready code
+- **develop**: Integration branch
+- **feature/***: New feature development
+- **bugfix/***: Bug fixes
+- **hotfix/***: Critical production fixes
+
+### Development Environment Setup:
+
+#### Prerequisites:
+- Docker & Docker Compose
+- Node.js 18+
+- Python 3.11+
+- PostgreSQL (via Docker)
+
+#### Quick Start:
+```bash
+# Clone repository
+git clone <repository-url>
+cd DAO-PORTAL
+
+# Start services
+docker-compose up -d
+
+# Install frontend dependencies
+cd web
+npm install
+npm run dev
+
+# Install backend dependencies
+cd ../backend
+pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+```
+
+### Code Review Process:
+1. Feature branch creation
+2. Development and testing
+3. Pull request creation
+4. Code review and approval
+5. Automated testing
+6. Merge to develop
+7. Integration testing
+8. Release to main
+
+## 9. TESTING STRATEGY
+================================================================================
+
+### Testing Pyramid:
+
+#### Unit Tests (70%):
+- Individual function testing
+- Component isolation testing
+- Mock external dependencies
+- Fast execution
+
+#### Integration Tests (20%):
+- API endpoint testing
+- Database integration testing
+- Service interaction testing
+- Medium execution time
+
+#### End-to-End Tests (10%):
+- Full user workflow testing
+- Browser automation
+- Critical path validation
+- Slow execution
+
+### Backend Testing:
+
+#### API Testing with Pytest:
+```python
+def test_get_daos():
+    response = client.get("/api/v1/daos")
+    assert response.status_code == 200
+    assert "data" in response.json()
+```
+
+#### Database Testing:
+- Test database setup/teardown
+- Transaction isolation
+- Data validation testing
+
+### Frontend Testing:
+
+#### Component Testing:
+```typescript
+import { render, screen } from '@testing-library/react';
+import { DAOCard } from './DAOCard';
+
+test('renders DAO card with correct data', () => {
+  render(<DAOCard dao={mockDAO} />);
+  expect(screen.getByText('Test DAO')).toBeInTheDocument();
+});
+```
+
+#### Hook Testing:
+```typescript
+import { renderHook } from '@testing-library/react-hooks';
+import { useDAOs } from './useDAOs';
+
+test('useDAOs hook returns DAO data', () => {
+  const { result } = renderHook(() => useDAOs());
+  expect(result.current.data).toBeDefined();
+});
+```
+
+### Performance Testing:
+- Load testing with Artillery/K6
+- Database query optimization
+- Frontend bundle size monitoring
+- Core Web Vitals measurement
+
+## 10. PRODUCTION DEPLOYMENT
+================================================================================
+
+### Deployment Architecture:
+
+#### Container Orchestration:
+```yaml
+# docker-compose.prod.yml
+version: '3.8'
+services:
+  frontend:
+    build: ./web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=https://api.daoportal.com
+    
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/daoportal
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - db
+      - redis
+    
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=daoportal
+      - POSTGRES_USER=daoportal_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+  redis:
+    image: redis:7-alpine
+    
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/ssl
+```
+
+### Environment Configuration:
+
+#### Production Environment Variables:
+```bash
+# Database
+DATABASE_URL=postgresql://user:password@host:5432/database
+DATABASE_POOL_SIZE=20
+
+# Security
+SECRET_KEY=your-secret-key
+JWT_SECRET=your-jwt-secret
+CORS_ORIGINS=https://yourdomain.com
+
+# External APIs
+BLOCKCHAIN_API_KEY=your-api-key
+ANALYTICS_API_KEY=your-analytics-key
+
+# Monitoring
+SENTRY_DSN=your-sentry-dsn
+LOG_LEVEL=INFO
+
+# Performance
+REDIS_URL=redis://redis:6379
+CELERY_BROKER_URL=redis://redis:6379
+CELERY_RESULT_BACKEND=redis://redis:6379
+```
+
+### Infrastructure Requirements:
+
+#### Minimum Server Specifications:
+```
+Production Environment:
+- CPU: 4 cores
+- RAM: 8GB
+- Storage: 100GB SSD
+- Network: 1Gbps
+
+Staging Environment:
+- CPU: 2 cores
+- RAM: 4GB
+- Storage: 50GB SSD
+- Network: 100Mbps
+```
+
+#### Recommended Cloud Setup:
+```
+AWS/GCP/Azure:
+- Application: Container Service (ECS/Cloud Run/Container Instances)
+- Database: Managed PostgreSQL (RDS/Cloud SQL/Azure Database)
+- Cache: Managed Redis (ElastiCache/Memory Store/Azure Cache)
+- Load Balancer: Application Load Balancer
+- CDN: CloudFront/Cloud CDN/Azure CDN
+- Monitoring: CloudWatch/Cloud Monitoring/Azure Monitor
+```
+
+### Deployment Process:
+
+#### CI/CD Pipeline (GitHub Actions):
+```yaml
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run tests
+        run: |
+          npm test
+          pytest
+  
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build Docker images
+        run: |
+          docker build -t frontend ./web
+          docker build -t backend ./backend
+  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        run: |
+          docker-compose -f docker-compose.prod.yml up -d
+```
+
+#### Database Migration:
+```bash
+# Run migrations
+alembic upgrade head
+
+# Backup before deployment
+pg_dump daoportal > backup_$(date +%Y%m%d_%H%M%S).sql
+
+# Rollback if needed
+alembic downgrade -1
+```
+
+### Security Configuration:
+
+#### SSL/TLS Setup:
+```nginx
+server {
+    listen 443 ssl http2;
+    server_name daoportal.com;
+    
+    ssl_certificate /etc/ssl/certs/daoportal.com.crt;
+    ssl_certificate_key /etc/ssl/private/daoportal.com.key;
+    
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256;
+    
+    location / {
+        proxy_pass http://frontend:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+    
+    location /api/ {
+        proxy_pass http://backend:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+```
+
+#### Security Headers:
+```nginx
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-XSS-Protection "1; mode=block" always;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';" always;
+```
+
+### Performance Optimization:
+
+#### Frontend Optimization:
+- Static asset optimization
+- Image optimization with Next.js
+- Code splitting and lazy loading
+- CDN configuration
+- Caching strategies
+
+#### Backend Optimization:
+- Database connection pooling
+- Query optimization
+- Redis caching
+- Background task processing
+- API response compression
+
+#### Database Optimization:
+```sql
+-- Query optimization
+EXPLAIN ANALYZE SELECT * FROM daos WHERE chain = 'ethereum';
+
+-- Index optimization
+CREATE INDEX CONCURRENTLY idx_daos_chain_active ON daos(chain) WHERE active = true;
+
+-- Connection pooling
+max_connections = 100
+shared_buffers = 256MB
+effective_cache_size = 1GB
+```
+
+## 11. MONITORING & MAINTENANCE
+================================================================================
+
+### Application Monitoring:
+
+#### Metrics to Monitor:
+- **Performance**: Response times, throughput, error rates
+- **Infrastructure**: CPU, memory, disk usage, network
+- **Business**: Active users, API usage, data freshness
+- **Security**: Failed login attempts, suspicious activity
+
+#### Monitoring Stack:
+```yaml
+# Prometheus + Grafana setup
+version: '3.8'
+services:
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+```
+
+#### Alerting Rules:
+```yaml
+# prometheus.rules.yml
+groups:
+  - name: dao_portal_alerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.1
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          
+      - alert: DatabaseConnectionsHigh
+        expr: pg_stat_database_numbackends > 80
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Database connections approaching limit"
+```
+
+### Logging Strategy:
+
+#### Structured Logging:
+```python
+# Backend logging
+import structlog
+
+logger = structlog.get_logger()
+
+@app.middleware("http")
+async def logging_middleware(request: Request, call_next):
+    start_time = time.time()
+    response = await call_next(request)
+    process_time = time.time() - start_time
+    
+    logger.info(
+        "request_processed",
+        method=request.method,
+        url=str(request.url),
+        status_code=response.status_code,
+        process_time=process_time
+    )
+    return response
+```
+
+#### Log Aggregation:
+- ELK Stack (Elasticsearch, Logstash, Kibana)
+- Centralized logging for all services
+- Log retention policies
+- Real-time log analysis
+
+### Backup Strategy:
+
+#### Database Backups:
+```bash
+#!/bin/bash
+# daily_backup.sh
+
+DATE=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="/backups"
+
+# Create backup
+pg_dump -h localhost -U daoportal_user daoportal > $BACKUP_DIR/backup_$DATE.sql
+
+# Compress backup
+gzip $BACKUP_DIR/backup_$DATE.sql
+
+# Clean old backups (keep 30 days)
+find $BACKUP_DIR -name "backup_*.sql.gz" -mtime +30 -delete
+
+# Upload to cloud storage
+aws s3 cp $BACKUP_DIR/backup_$DATE.sql.gz s3://dao-portal-backups/
+```
+
+#### Application Data Backups:
+- Configuration files backup
+- SSL certificates backup
+- Application logs backup
+- Docker volumes backup
+
+### Health Checks:
+
+#### Application Health Endpoints:
+```python
+# Backend health check
+@app.get("/health")
+async def health_check():
+    try:
+        # Database connectivity check
+        db.execute("SELECT 1")
+        
+        # Redis connectivity check
+        redis_client.ping()
+        
+        return {
+            "status": "healthy",
+            "timestamp": datetime.utcnow(),
+            "services": {
+                "database": "healthy",
+                "cache": "healthy"
+            }
+        }
+    except Exception as e:
+        return {
+            "status": "unhealthy",
+            "error": str(e)
+        }
+```
+
+#### Docker Health Checks:
+```dockerfile
+# Dockerfile health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:8000/health || exit 1
+```
+
+### Maintenance Procedures:
+
+#### Routine Maintenance:
+- **Daily**: Log review, backup verification
+- **Weekly**: Performance review, security updates
+- **Monthly**: Dependency updates, capacity planning
+- **Quarterly**: Security audit, disaster recovery testing
+
+#### Update Procedures:
+1. **Staging Deployment**: Test in staging environment
+2. **Database Migration**: Run migrations in maintenance window
+3. **Blue-Green Deployment**: Minimize downtime
+4. **Rollback Plan**: Quick rollback procedure if issues occur
+5. **Post-Deployment Testing**: Verify all functionality
+
+## 12. TROUBLESHOOTING GUIDE
+================================================================================
+
+### Common Issues & Solutions:
+
+#### Frontend Issues:
+
+**Issue**: Tailwind CSS styles not applying
+```bash
+# Solution: Check PostCSS configuration
+# File: postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+# Restart development server
+npm run dev
+```
+
+**Issue**: API connection errors
+```bash
+# Check environment variables
+echo $NEXT_PUBLIC_API_URL
+
+# Verify backend connectivity
+curl http://localhost:8000/health
+
+# Check network policies
+docker network ls
+```
+
+#### Backend Issues:
+
+**Issue**: Database connection errors
+```bash
+# Check database status
+docker-compose ps db
+
+# Verify connection string
+echo $DATABASE_URL
+
+# Test connection
+psql $DATABASE_URL -c "SELECT version();"
+```
+
+**Issue**: Import errors or module not found
+```bash
+# Check Python path
+python -c "import sys; print(sys.path)"
+
+# Reinstall dependencies
+pip install -r requirements.txt
+
+# Check virtual environment
+which python
+```
+
+#### Database Issues:
+
+**Issue**: Query performance problems
+```sql
+-- Check slow queries
+SELECT query, mean_time, calls 
+FROM pg_stat_statements 
+ORDER BY mean_time DESC 
+LIMIT 10;
+
+-- Analyze table statistics
+ANALYZE daos;
+
+-- Check index usage
+SELECT schemaname, tablename, indexname, idx_scan, idx_tup_read, idx_tup_fetch 
+FROM pg_stat_user_indexes 
+ORDER BY idx_scan DESC;
+```
+
+**Issue**: Migration errors
+```bash
+# Check migration status
+alembic current
+
+# Show migration history
+alembic history
+
+# Fix migration conflicts
+alembic merge -m "merge conflicts" heads
+```
+
+#### Docker Issues:
+
+**Issue**: Container startup failures
+```bash
+# Check container logs
+docker-compose logs backend
+
+# Verify image build
+docker build -t backend ./backend
+
+# Check resource usage
+docker stats
+
+# Restart services
+docker-compose restart backend
+```
+
+**Issue**: Port conflicts
+```bash
+# Check port usage
+lsof -i :8000
+
+# Kill process using port
+kill -9 $(lsof -t -i:8000)
+
+# Change port in docker-compose.yml
+```
+
+### Performance Troubleshooting:
+
+#### Slow API Responses:
+1. Check database query performance
+2. Review API endpoint logic
+3. Analyze network latency
+4. Check resource utilization
+5. Review caching implementation
+
+#### High Memory Usage:
+1. Monitor application memory leaks
+2. Check database connection pooling
+3. Review background task memory usage
+4. Optimize data processing algorithms
+5. Implement proper garbage collection
+
+#### Database Lock Issues:
+```sql
+-- Check active locks
+SELECT * FROM pg_locks WHERE NOT granted;
+
+-- Check blocking queries
+SELECT blocked_locks.pid AS blocked_pid,
+       blocked_activity.usename AS blocked_user,
+       blocking_locks.pid AS blocking_pid,
+       blocking_activity.usename AS blocking_user,
+       blocked_activity.query AS blocked_statement,
+       blocking_activity.query AS current_statement_in_blocking_process
+FROM pg_catalog.pg_locks blocked_locks
+JOIN pg_catalog.pg_stat_activity blocked_activity ON blocked_activity.pid = blocked_locks.pid
+JOIN pg_catalog.pg_locks blocking_locks ON blocking_locks.locktype = blocked_locks.locktype
+JOIN pg_catalog.pg_stat_activity blocking_activity ON blocking_activity.pid = blocking_locks.pid
+WHERE NOT blocked_locks.granted AND blocking_locks.granted;
+```
+
+### Emergency Procedures:
+
+#### System Outage Response:
+1. **Assessment**: Identify scope and impact
+2. **Communication**: Notify stakeholders
+3. **Isolation**: Isolate affected components
+4. **Resolution**: Apply fix or rollback
+5. **Verification**: Confirm system recovery
+6. **Post-mortem**: Document lessons learned
+
+#### Data Recovery:
+1. **Assess Data Loss**: Determine extent of data loss
+2. **Stop Write Operations**: Prevent further data corruption
+3. **Restore from Backup**: Use most recent clean backup
+4. **Verify Data Integrity**: Check restored data
+5. **Resume Operations**: Gradually restore service
+6. **Monitor**: Watch for related issues
+
+### Contact Information:
+
+#### Support Escalation:
+- **Level 1**: Development Team
+- **Level 2**: DevOps/Infrastructure Team
+- **Level 3**: External Consultants/Vendors
+
+#### Emergency Contacts:
+- Database Administrator: [contact info]
+- Infrastructure Team: [contact info]
+- Security Team: [contact info]
+- Business Stakeholders: [contact info]
+
+================================================================================
+END OF TECHNICAL DOCUMENTATION
+
+This document should be updated regularly as the system evolves.
+Last Updated: June 4, 2025
+Version: 1.0
+
+For questions or updates to this documentation, please contact the development team.
+================================================================================

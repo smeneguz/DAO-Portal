@@ -56,7 +56,7 @@ export default function RootLayout({
                       </div>
                       
                       <p className="text-sm text-muted-foreground">
-                        © {new Date().getFullYear()} DAO Portal • Built with Next.js
+                        © {new Date().getFullYear()} DAO Portal • Built by Silvio Meneguzzo
                       </p>
                     </div>
                   </div>
