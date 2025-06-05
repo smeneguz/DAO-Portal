@@ -37,6 +37,10 @@ app.include_router(enhanced_metrics.router, prefix=settings.API_PREFIX, tags=["E
 async def root():
     return {"message": "Welcome to DAO Portal API"}
 
+@app.get("/health")
+async def health():
+    return {"status": "healthy", "message": "DAO Portal API is running"}
+
 @app.get(f"{settings.API_PREFIX}")
 async def api_root():
     return {"message": "Welcome to DAO Portal API V1"}
