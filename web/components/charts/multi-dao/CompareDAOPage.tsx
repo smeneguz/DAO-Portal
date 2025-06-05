@@ -7,6 +7,10 @@ import Link from 'next/link';
 import MultiDAOComparisonChart from './MultiDAOComparisonChart';
 import { VisualizationWrapper } from '../../../components/visualization/VisualizationWrapper';
 import DecentralizationAnalysisImproved3 from '../../../components/visualization/KPIAnalysis/Decentralization/DecentralizationAnalysisImproved3';
+import TreasuryAnalysis from '../../../components/visualization/KPIAnalysis/TreasuryAnalysis/TreasuryAnalysis';
+import ParticipationAnalysis from '../../../components/visualization/KPIAnalysis/ParticipationAnalysis/ParticipationAnalysis';
+import ThresholdAnalysis from '../../../components/visualization/KPIAnalysis/ThresholdAnalysis/ThresholdAnalysis';
+import VotingEfficiencyAnalysis from '../../../components/visualization/KPIAnalysis/VotingEfficiencyAnalysis/VotingEfficiencyAnalysis';
 import { 
   EmptyStateIcon, 
   BackIcon, 
@@ -355,42 +359,81 @@ const CompareDAOPage = () => {
                     data={daoData}
                   />
                 </div>
-                
-                {/* Enhanced Coming Soon Section */}
-                <div className="chart-container-professional opacity-75 border-dashed">
+
+                {/* Treasury Analysis Section */}
+                <div className="chart-container-professional">
                   <div className="chart-header-enhanced">
                     <div>
-                      <h2 className="chart-title text-muted-foreground">Coming Soon: Participation Deep Dive</h2>
-                      <p className="chart-subtitle-enhanced">Detailed member engagement patterns, voting behaviors, and community health metrics</p>
+                      <h2 className="chart-title-gradient">Treasury & Token Distribution Analysis</h2>
+                      <p className="chart-subtitle-enhanced">Comprehensive analysis of treasury holdings, token circulation patterns, and financial sustainability metrics</p>
                     </div>
-                    <div className="status-badge status-badge-neutral">
-                      <ClockIcon className="mr-2" size="sm" />
-                      In Development
-                    </div>
-                  </div>
-                  <div className="empty-state-enhanced">
-                    <div className="empty-state-icon-enhanced">
-                      <LightBulbIcon />
-                    </div>
-                    <h3 className="empty-state-title-enhanced">Advanced Analytics in Progress</h3>
-                    <p className="empty-state-description-enhanced">
-                      Our team is developing cutting-edge visualization tools to provide unprecedented insights into DAO participation patterns, governance effectiveness, and community dynamics.
-                    </p>
-                    <div className="flex items-center justify-center gap-6 mt-8 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                        <span>Engagement Tracking</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                        <span>Behavior Analysis</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                        <span>Predictive Models</span>
-                      </div>
+                    <div className="status-badge status-badge-info">
+                      <InfoIcon className="mr-2" size="sm" />
+                      Financial Analytics
                     </div>
                   </div>
+                  <TreasuryAnalysis 
+                    data={daoData}
+                    mode="multi"
+                    title="Multi-DAO Treasury Comparison"
+                  />
+                </div>
+                
+                {/* Participation Analysis Section */}
+                <div className="chart-container-professional">
+                  <div className="chart-header-enhanced">
+                    <div>
+                      <h2 className="chart-title-gradient">Participation & Engagement Analysis</h2>
+                      <p className="chart-subtitle-enhanced">Community participation patterns, member engagement levels, and voting behavior across network sizes</p>
+                    </div>
+                    <div className="status-badge status-badge-success">
+                      <ParticipationIcon className="mr-2" size="sm" />
+                      Participation Analytics
+                    </div>
+                  </div>
+                  <ParticipationAnalysis 
+                    data={daoData}
+                    mode="multi"
+                    title="Multi-DAO Participation Comparison"
+                  />
+                </div>
+
+                {/* Threshold Analysis Section */}
+                <div className="chart-container-professional">
+                  <div className="chart-header-enhanced">
+                    <div>
+                      <h2 className="chart-title-gradient">Governance Threshold Analysis</h2>
+                      <p className="chart-subtitle-enhanced">Participation threshold categorization and governance effectiveness metrics</p>
+                    </div>
+                    <div className="status-badge status-badge-info">
+                      <AnalyticsIcon className="mr-2" size="sm" />
+                      Threshold Analytics
+                    </div>
+                  </div>
+                  <ThresholdAnalysis 
+                    data={daoData}
+                    mode="multi"
+                    title="Multi-DAO Threshold Comparison"
+                  />
+                </div>
+
+                {/* Voting Efficiency Analysis Section */}
+                <div className="chart-container-professional">
+                  <div className="chart-header-enhanced">
+                    <div>
+                      <h2 className="chart-title-gradient">Voting Efficiency Analysis</h2>
+                      <p className="chart-subtitle-enhanced">Proposal approval rates, voting duration patterns, and governance efficiency metrics across DAOs</p>
+                    </div>
+                    <div className="status-badge status-badge-success">
+                      <VotingIcon className="mr-2" size="sm" />
+                      Voting Analytics
+                    </div>
+                  </div>
+                  <VotingEfficiencyAnalysis 
+                    data={daoData}
+                    mode="multi"
+                    title="Multi-DAO Voting Efficiency Comparison"
+                  />
                 </div>
               </div>
             )}
