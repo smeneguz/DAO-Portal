@@ -16,10 +16,16 @@
 - **Frontend**: http://130.192.84.45:8080
 - **API Root**: http://130.192.84.45:8080/api/v1/
 - **API Documentation**: http://130.192.84.45:8080/api/v1/docs
+- **Analytics Dashboard**: http://130.192.84.45:8080/analytics
 
 ### Management Tools
 - **Database Admin (PgAdmin)**: http://130.192.84.45:5050
 - **Health Check**: http://130.192.84.45:8080/health
+
+### Analytics & Monitoring
+- **Usage Analytics**: http://130.192.84.45:8080/api/v1/analytics/usage
+- **Visitor Stats**: http://130.192.84.45:8080/api/v1/analytics/visitors
+- **System Health**: http://130.192.84.45:8080/api/v1/analytics/system
 
 ### API Endpoints Examples
 ```bash
@@ -107,14 +113,20 @@ sudo git pull origin main
 
 #### 4. Update Frontend (if web/ changed)
 ```bash
-# Copy any new frontend lib files if needed
-sudo docker-compose -f docker-compose.build.yml up -d --build frontend
+# Stop and remove frontend container to force environment reload
+sudo docker-compose -f docker-compose.build.yml stop frontend
+sudo docker-compose -f docker-compose.build.yml rm -f frontend
+
+# Load environment variables and rebuild frontend
+set -a && source .env.production && set +a
+sudo -E docker-compose -f docker-compose.build.yml up -d --build frontend
 ```
 
 #### 5. Update Backend (if backend/ changed)
 ```bash
-# Rebuild backend container
-sudo docker-compose -f docker-compose.build.yml up -d --build backend
+# Load environment variables and rebuild backend
+set -a && source .env.production && set +a
+sudo -E docker-compose -f docker-compose.build.yml up -d --build backend
 ```
 
 #### 6. Full Stack Rebuild (if major changes)
@@ -122,8 +134,9 @@ sudo docker-compose -f docker-compose.build.yml up -d --build backend
 # Stop all services
 sudo docker-compose -f docker-compose.build.yml down
 
-# Rebuild all containers
-sudo docker-compose -f docker-compose.build.yml up -d --build
+# Load environment variables and rebuild all containers
+set -a && source .env.production && set +a
+sudo -E docker-compose -f docker-compose.build.yml up -d --build
 
 # Verify all services are healthy
 sudo docker-compose -f docker-compose.build.yml ps
@@ -158,7 +171,7 @@ GITHUB_REPOSITORY=silviomeneguzzo/dao-portal
 POSTGRES_USER=dao_user
 POSTGRES_PASSWORD=dao_password
 POSTGRES_DB=dao_portal
-NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+NEXT_PUBLIC_API_URL=http://130.192.84.45:8080/api/v1
 ```
 
 ### Nginx Configuration
